@@ -2,11 +2,64 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
+% mostrar colores
+\usepackage{xcolor}
+
+% mostrar código
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Código}
+% estilo de código para JavaScript
+% (https://www.youtube.com/watch?v=qxkQgG1Y0bY)
+\lstdefinestyle{javastyle}{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    commentstyle=\color[HTML]{2b922c},
+    keywordstyle=\color[HTML]{6b2eff},
+    stringstyle=\color[HTML]{ac2f38},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\ttfamily\footnotesize,
+    stepnumber=1,
+}
+
 \title{Proyecto Fin de Ciclo}
 \author{Alfredo Rodríguez Gracía}
 
 \begin{document}
     \maketitle
 
-    Las cosas de la casa.
+    \section{Descripción del proyecto}
+
+    Breve descripción del proyecto indicando qué es lo que hace, para qué sirve y si tiene futuros usos con pequeñas modificaciones.
+
+    \section{Ámbito de implantación}
+
+    Deberá describirse el lugar (empresa, organización, sector...) en el que se implantará el proyecto y con qué objetivo, además de indicar a quién va dirigida la aplicación, es decir, identificar quién o quiénes serán los principales usuarios de la misma.
+
+    \section{Recursos de hardware y software}
+
+    Se describirán los requisitos mínimos y los requisitos recomendados de hardware, tanto para el desarrollo de la aplicación, como para su instalación y ejecución.
+
+    Se describirán las necesidades de software requeridas para el desarrollo de la aplicación.
+
+    \section{Temporalización del desarrollo del proyecto}
+
+    Deben describirse las distintas actividades necesarias para desarrollar el proyecto, asignarles un tiempo a cada una de ellas y construir los dos diagramas completos.
+
+    \section{Descripción de los datos base y de los resultados}
+
+    Se describirán el tipo de campo (en caso de java serían: String, char, int, double, long……), que se utilizará para recoger los diferentes datos.
+
+    Posibles restricciones y/o estructuras utilizadas (clases). Lo mismo para los datos resultantes de los procesos.
+
+    \section{Relación entre dispositivos y programa o rutinas}
+
+    Se identificarán los componentes que comunican el paquete o aplicación software desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc. 
+
+    Se identificarán los componentes software (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
+
+    \section{Ejemplo de código}
+
+    \lstinputlisting[language=Java, style=javastyle, caption=Las funciones de ejemplo, label=example1]{code/example1.js}
+
 \end{document}
