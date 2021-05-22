@@ -2,12 +2,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
+% para que el índice y las referencias tengan enlaces
+\usepackage[hidelinks]{hyperref}
+
 % mostrar colores
 \usepackage{xcolor}
-
 % mostrar código
 \usepackage{listings}
-\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistingname}{Ejemplo}
+\renewcommand{\lstlistlistingname}{Ejemplos de código}
 % estilo de código para JavaScript
 % (https://www.youtube.com/watch?v=qxkQgG1Y0bY)
 \lstdefinestyle{javastyle}{
@@ -19,7 +22,7 @@
     showstringspaces=false,
     numbers=left,
     numberstyle=\ttfamily\footnotesize,
-    stepnumber=1,
+    stepnumber=1
 }
 
 \title{PROYECTO FIN DE CICLO\\\emph{\small{(nombre provisional)}}}
@@ -27,10 +30,16 @@
 
 \begin{document}
     \maketitle
+    \tableofcontents
+    %\hrule
+    \lstlistoflistings
+    \newpage
 
     \section{Descripción del proyecto}
 
     Breve descripción del proyecto indicando qué es lo que hace, para qué sirve y si tiene futuros usos con pequeñas modificaciones.
+
+    Como vemos en el ejemplo \ref{example1}, las \emph{arrow functions} son preciosas.
 
     \section{Ámbito de implantación}
 
@@ -42,23 +51,31 @@
 
     Se describirán las necesidades de software requeridas para el desarrollo de la aplicación.
 
-    \section{Temporalización del desarrollo del proyecto}
+    \section{Temporalización del desarrollo}
 
     Deben describirse las distintas actividades necesarias para desarrollar el proyecto, asignarles un tiempo a cada una de ellas y construir los dos diagramas completos.
 
-    \section{Descripción de los datos base y de los resultados}
+    \subsection{Diagrama de Gantt}
 
-    Se describirán el tipo de campo (en caso de java serían: String, char, int, double, long……), que se utilizará para recoger los diferentes datos.
+    \dots
+
+    \subsection{Diagrama PERT}
+
+    \dots
+
+    \section{Descripción de los datos base y resultados}
+
+    Se describirán el tipo de campo (en caso de java serían: String, char, int, double, long\dots), que se utilizará para recoger los diferentes datos.
 
     Posibles restricciones y/o estructuras utilizadas (clases). Lo mismo para los datos resultantes de los procesos.
 
     \section{Relación entre dispositivos y programa o rutinas}
 
-    Se identificarán los componentes que comunican el paquete o aplicación software desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc. 
+    Se identificarán los componentes que comunican el paquete o aplicación software desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc.
 
     Se identificarán los componentes software (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
 
-    \section{Ejemplo de código}
+    \newpage
 
     \lstinputlisting[language=Java, style=javastyle, caption=Las funciones de ejemplo, label=example1]{code/example1.js}
 
