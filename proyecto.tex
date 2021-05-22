@@ -34,7 +34,7 @@
 \newcommand\dchan{$\delta$chan }
 \newcommand\Dchan{$\Delta$chan }
 
-\title{\Dchan\\\bigskip\normalsize{Proyecto final\\Desarrollo de Aplicaciones Multiplataforma}}
+\title{\Dchan\\\bigskip\normalsize{Proyecto fin de ciclo\\Desarrollo de Aplicaciones Multiplataforma}}
 \author{Alfredo Rodríguez Gracía}
 \date{21 de mayo de 2021\\\bigskip\scriptsize{última revisión\\\today}}
 
@@ -50,15 +50,19 @@
 
     \section{Descripción del proyecto}
 
-    Breve descripción del proyecto indicando qué es lo que hace, para qué sirve y si tiene futuros usos con pequeñas modificaciones.
+    %Breve descripción del proyecto indicando qué es lo que hace, para qué sirve y si tiene futuros usos con pequeñas modificaciones.
 
     %Como vemos en el ejemplo \ref{example1}, las \emph{arrow functions} son preciosas.
 
-    \bigskip\hrule\bigskip
+    %\bigskip\hrule\bigskip
 
-    \Dchan (pronunciado como \emph{dichan}) es un proyecto de tablón de imágenes\cite{wikiImageboard}, centrado en el anonimato y la libertad de expresión \emph{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Este está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales actualmente, siguen siendo el refugio de muchos de internautas hoy en día.
+    \Dchan (pronunciado como \textit{dichan}) es un proyecto de tablón de imágenes \cite{wikiImageboard}, centrado en el anonimato y la libertad de expresión \textit{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Este está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales actualmente, siguen siendo el refugio de muchos de internautas hoy en día.
 
-    Un tablón de imágenes (también conocido por su nombre en inglés: \emph{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\emph{threads}) de diferentes temáticas en secciones, llamadas tablones o \emph{boards}. Sin embargo, los \emph{threads} en los \emph{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
+    Un tablón de imágenes (también conocido por su nombre en inglés: \textit{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\textit{threads}) de diferentes temáticas en secciones, llamadas tablones o \textit{boards}. Sin embargo, los \textit{threads} en los \textit{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
+
+    El proyecto \Dchan intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y cada uno limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
+
+    La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio Git de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos.
 
     \section{Ámbito de implantación}
 
