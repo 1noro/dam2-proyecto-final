@@ -1,16 +1,21 @@
 \documentclass[12pt,a4paper,titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
+% acentos en la bibliografía
+\usepackage{csquotes}
 
 % para que el índice y las referencias tengan enlaces
 \usepackage[hidelinks]{hyperref}
+% bibliografía
+\usepackage[backend=biber]{biblatex}
+\addbibresource{proyecto.bib}
 
 % mostrar colores
 \usepackage{xcolor}
 % mostrar código
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Ejemplo}
-\renewcommand{\lstlistlistingname}{Ejemplos de código}
+\renewcommand{\lstlistlistingname}{Bloques de código}
 % estilo de código para JavaScript
 % (https://www.youtube.com/watch?v=qxkQgG1Y0bY)
 \lstdefinestyle{javastyle}{
@@ -25,14 +30,22 @@
     stepnumber=1
 }
 
-\title{PROYECTO FINAL D.A.M.\\\emph{\small{(nombre provisional)}}}
+% comandos específicos del documento
+\newcommand\dchan{$\delta$chan }
+\newcommand\Dchan{$\Delta$chan }
+
+\title{\Dchan\\\bigskip\normalsize{Proyecto final\\Desarrollo de Aplicaciones Multiplataforma}}
 \author{Alfredo Rodríguez Gracía}
+\date{21 de mayo de 2021\\\bigskip\scriptsize{última revisión\\\today}}
 
 \begin{document}
+    % - portada 
     \maketitle
+    % - índice 
     \tableofcontents
     %\hrule
-    \lstlistoflistings
+    % \newpage
+    % \lstlistoflistings
     \newpage
 
     \section{Descripción del proyecto}
@@ -40,6 +53,12 @@
     Breve descripción del proyecto indicando qué es lo que hace, para qué sirve y si tiene futuros usos con pequeñas modificaciones.
 
     Como vemos en el ejemplo \ref{example1}, las \emph{arrow functions} son preciosas.
+
+    \bigskip\hrule\bigskip
+
+    \Dchan (pronunciado como \emph{dichan}) es un proyecto de tablón de imágenes, o \emph{imageboard}\cite{wikiImageboard}, centrado en el anonimato y la libertad de expresión \emph{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate.
+
+    La idea está inspirada en otros \emph{imageboards} existentes como \emph{4chan} y \emph{2channel}, sitios muy frecuentados actualmente, a pesar del enorme auge de las redes sociales actualmente.
 
     \section{Ámbito de implantación}
 
@@ -78,5 +97,17 @@
     \newpage
 
     \lstinputlisting[language=Java, style=javastyle, caption=Las funciones de ejemplo, label=example1]{code/example1.js}
+
+    \newpage
+    % - bibliografía
+    \printbibliography
+    % para listar las referencias en el índice
+    \addcontentsline{toc}{section}{Referencias}
+
+    % - índice de bloques de código
+    \newpage
+    \lstlistoflistings
+    % para listar las referencias en el índice
+    \addcontentsline{toc}{section}{Índice de bloques de código}
 
 \end{document}
