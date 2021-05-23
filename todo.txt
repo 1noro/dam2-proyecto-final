@@ -11,3 +11,4 @@ Ampliar último párrafo intro: permitir forks y ayudar a que
 cualquiera pueda crear su propio imageboard con una mínima
 configuración
 
+MyChan posible cambio de nombre?
