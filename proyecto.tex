@@ -62,7 +62,7 @@
 
     El proyecto {\Dchan} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
 
-    La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio Git de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos.
+    La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio \emph{Git} de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos.
 
     \section{Ámbito de implantación}
 
@@ -81,6 +81,8 @@
     \bigskip\hrule\bigskip
 
     Escasos tanto para el desarrollo como para la implementación cliente/servidor.
+
+    Tanto el diseño como el desarrollo de la base de datos se realizarán pensando en un servidor \emph{MariaDB}, dejando así la puerta abierta a una mayor compatibilidad con \emph{MySQL} y otras tecnologías similares. Estará pensada para ser lo mas ligera posible, permitiendo que pueda ser alojada en el mismo equipo que el servidor \emph{HTTP}. Pero siempre permitiendo que pueda instalarse en un equipo diferente, no cerrando la puerta a incrementar las capacidades de la instancia para soportar mayores cantidades de tráfico.
 
     \section{Temporalización del desarrollo}
 
@@ -114,12 +116,12 @@
     Texto introductorio\dots
 
     \subsection{Descripción de la base de datos}
-    
-    % Texto introductorio\dots\bigskip
+
+    El diseño de la base de datos, siempre enfocado hacia una mayor eficiencia y rapidez en la lectura y escritura de los datos, está dividida en tres tablas: \textit{BOARD}, \textit{THREAD} y \textit{POST}. Este diseño intenta compartimentar al máximo las diferentes partes de la página con el mínimo acoplamiento entre la s tablas para evitar hacer \textit{joins} innecesarios, que supondrían una mayor carga para el servidor.
 
     \begin{figure}[h]
         \centering
-        \begin{tikzpicture}[auto, node distance=2cm]
+        \begin{tikzpicture}[auto, node distance=1.5cm]
             \node[entity] (board) {BOARD};
             \node[relationship] (has1) [below = of board] {has};
             \node[entity] (thread) [right = of has1] {THREAD};
@@ -131,6 +133,8 @@
         \caption{Diagrama Entidad-Relación de la base de datos de \Dchan.}
         \label{er:diagram}
     \end{figure}
+
+    En el diagrama \emph{ER} de la figura \ref{er:diagram} no se han dibujado los atributos de las entidades con el fin de profundizar en ellos a continuación con el mayor detalle posible.
 
     \paragraph{BOARD} Cada uno de los tablones que dividen la página en diferentes temas.
 
@@ -152,7 +156,7 @@
         \item \textbf{sticky} BOOLEAN DEFAULT FALSE NOT NULL
         \item \textbf{closed} BOOLEAN DEFAULT FALSE NOT NULL
         \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
-        \item \textbf{board} INTEGER FOREIGN KEY REF. POST(id) NOT NULL
+        \item \textbf{board} BIGINT FOREIGN KEY REF. POST(id) NOT NULL
     \end{itemize}
 
     \paragraph{POST} Cada comentario de un usuario dentro de un debate (\textit{thread}), formado por un texto y una foto o pequeño vídeo opcional.
@@ -164,8 +168,10 @@
         \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
         \item \textbf{timestamp} DATETIME DEFAULT NOW() NOT NULL
         \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
-        \item \textbf{thread} INTEGER FOREIGN KEY REF. THREAD(id)
+        \item \textbf{thread} BIGINT FOREIGN KEY REF. THREAD(id)
     \end{itemize}
+
+    \lstinputlisting[language=SQL, style=javastyle, caption=Ejemplo del procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
 
     \section{Relación entre dispositivos y programa o rutinas}
 
