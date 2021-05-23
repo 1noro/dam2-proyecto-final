@@ -1,0 +1,13 @@
+# Lista de cosas que quedan por hacer
+
+post mencionar que es
+
+mencionar que la web debe estar enfocada en la rapidez y el 
+performance, no debe cargar ni servidor ni cliente.
+
+la web aunque tenga un estilo retro debe estar pensada para móviles
+
+Ampliar último párrafo intro: permitir forks y ayudar a que
+cualquiera pueda crear su propio imageboard con una mínima
+configuración
+

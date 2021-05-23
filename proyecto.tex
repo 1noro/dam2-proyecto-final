@@ -9,10 +9,13 @@
 % bibliografía
 \usepackage[backend=biber]{biblatex}
 \addbibresource{proyecto.bib}
+% diagramas (https://texample.net/tikz/examples/er-diagram/)
+\usepackage{tikz}
+\usetikzlibrary{er,positioning}
 
 % mostrar colores
 \usepackage{xcolor}
-% mostrar código
+% mostrar bloques de código
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Ejemplo}
 \renewcommand{\lstlistlistingname}{Bloques de código}
@@ -31,8 +34,8 @@
 }
 
 % comandos específicos del documento
-\newcommand\dchan{$\delta$chan }
-\newcommand\Dchan{$\Delta$chan }
+\newcommand\dchan{$\delta$chan}
+\newcommand\Dchan{$\Delta$chan}
 
 \title{\Dchan\\\bigskip\normalsize{Proyecto fin de ciclo\\Desarrollo de Aplicaciones Multiplataforma}}
 \author{Alfredo Rodríguez Gracía}
@@ -53,11 +56,11 @@
 
     %\bigskip\hrule\bigskip
 
-    \Dchan (pronunciado como \textit{dichan}) es un proyecto de tablón de imágenes \cite{wikiImageboard}, centrado en el anonimato y la libertad de expresión \textit{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales, siguen siendo el refugio de muchos internautas hoy en día.
+    {\Dchan} (pronunciado como \textit{dichan}) es un proyecto de tablón de imágenes \cite{wikiImageboard}, centrado en el anonimato y la libertad de expresión \textit{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales, siguen siendo el refugio de muchos internautas hoy en día.
 
     Un tablón de imágenes (también conocido por su nombre en inglés: \textit{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\textit{threads}) de diferentes temáticas en secciones, llamadas tablones o \textit{boards}. Sin embargo, los \textit{threads} en los \textit{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
 
-    El proyecto \Dchan intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y cada uno limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
+    El proyecto {\Dchan} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
 
     La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio Git de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos.
 
@@ -65,15 +68,32 @@
 
     Deberá describirse el lugar (empresa, organización, sector...) en el que se implantará el proyecto y con qué objetivo, además de indicar a quién va dirigida la aplicación, es decir, identificar quién o quiénes serán los principales usuarios de la misma.
 
+    \bigskip\hrule\bigskip
+
+    Target: Personas a quien les importan mas las ideas, el debate en sí, y no las personas que sostienen esas ideas.
+
     \section{Recursos de hardware y software}
 
     Se describirán los requisitos mínimos y los requisitos recomendados de hardware, tanto para el desarrollo de la aplicación, como para su instalación y ejecución.
 
     Se describirán las necesidades de software requeridas para el desarrollo de la aplicación.
 
+    \bigskip\hrule\bigskip
+
+    Escasos tanto para el desarrollo como para la implementación cliente/servidor.
+
     \section{Temporalización del desarrollo}
 
     Deben describirse las distintas actividades necesarias para desarrollar el proyecto, asignarles un tiempo a cada una de ellas y construir los dos diagramas completos.
+
+    \bigskip\hrule\bigskip
+
+    Tareas a realizar:
+
+    \begin{enumerate}
+        \item Empezar
+        \item Acabar
+    \end{enumerate}
 
     \subsection{Diagrama de Gantt}
 
@@ -89,11 +109,73 @@
 
     Posibles restricciones y/o estructuras utilizadas (clases). Lo mismo para los datos resultantes de los procesos.
 
+    \bigskip\hrule\bigskip
+
+    Texto introductorio\dots
+
+    \subsection{Descripción de la base de datos}
+    
+    % Texto introductorio\dots\bigskip
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[auto, node distance=2cm]
+            \node[entity] (board) {BOARD};
+            \node[relationship] (has1) [below = of board] {has};
+            \node[entity] (thread) [right = of has1] {THREAD};
+            \path (has1) edge node {1} (board) edge node {\(n\)} (thread);
+            \node[relationship] (has2) [right = of thread] {has};
+            \node[entity] (post) [above = of has2] {POST};
+            \path (has2) edge node {1} (thread) edge node {\(n\)} (post);
+        \end{tikzpicture}
+        \caption{Diagrama Entidad-Relación de la base de datos de \Dchan.}
+        \label{er:diagram}
+    \end{figure}
+
+    \paragraph{BOARD} Cada uno de los tablones que dividen la página en diferentes temas.
+
+    \begin{itemize}
+        \item \textbf{id} BIGINT PRIMARY KEY
+        \item \textbf{name} VARCHAR(256) NOT NULL
+        \item \textbf{slug} VARCHAR(3) NOT NULL
+    \end{itemize}
+
+    \paragraph{THREAD} Cada uno de los debates, o \emph{hilos} de discusión, que se inician dentro de un tablón.
+
+    \begin{itemize}
+        \item \textbf{id} BIGINT PRIMARY KEY
+        \item \textbf{subject} VARCHAR(256) DEFAULT `' NOT NULL
+        \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{comment} VARCHAR(512) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
+        \item \textbf{timestamp} DATETIME DEFAULT NOW() NOT NULL
+        \item \textbf{sticky} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{closed} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{board} INTEGER FOREIGN KEY REF. POST(id) NOT NULL
+    \end{itemize}
+
+    \paragraph{POST} Cada comentario de un usuario dentro de un debate (\textit{thread}), formado por un texto y una foto o pequeño vídeo opcional.
+
+    \begin{itemize}
+        \item \textbf{id} BIGINT PRIMARY KEY
+        \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{comment} VARCHAR(512) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
+        \item \textbf{timestamp} DATETIME DEFAULT NOW() NOT NULL
+        \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{thread} INTEGER FOREIGN KEY REF. THREAD(id)
+    \end{itemize}
+
     \section{Relación entre dispositivos y programa o rutinas}
 
     Se identificarán los componentes que comunican el paquete o aplicación software desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc.
 
     Se identificarán los componentes software (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
+
+    \bigskip\hrule\bigskip
+
+    Texto introductorio\dots
 
     \lstinputlisting[language=Java, style=javastyle, caption=Las funciones de ejemplo, label=example1]{code/example1.js}
 
