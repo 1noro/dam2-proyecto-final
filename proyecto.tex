@@ -34,10 +34,10 @@
 }
 
 % comandos específicos del documento
-\newcommand\dchan{$\delta$chan}
-\newcommand\Dchan{$\Delta$chan}
+\newcommand\projectname{$\Delta$chan}
+% \newcommand\projectname{My-chan}
 
-\title{\Dchan\\\bigskip\normalsize{Proyecto fin de ciclo\\Desarrollo de Aplicaciones Multiplataforma}}
+\title{\projectname\\\bigskip\normalsize{Proyecto fin de ciclo\\Desarrollo de Aplicaciones Multiplataforma}}
 \author{Alfredo Rodríguez Gracía}
 \date{21 de mayo de 2021\\\bigskip\scriptsize{última revisión\\\today}}
 
@@ -56,13 +56,27 @@
 
     %\bigskip\hrule\bigskip
 
-    {\Dchan} (pronunciado como \textit{dichan}) es un proyecto de tablón de imágenes \cite{wikiImageboard}, centrado en el anonimato y la libertad de expresión \textit{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales, siguen siendo el refugio de muchos internautas hoy en día.
+    {\projectname} (pronunciado como \textit{dichan}) es un proyecto de tablón de imágenes \cite{wiki:imageboard}, centrado en el anonimato y la libertad de expresión \textit{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales, siguen siendo el refugio de muchos internautas hoy en día.
 
     Un tablón de imágenes (también conocido por su nombre en inglés: \textit{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\textit{threads}) de diferentes temáticas en secciones, llamadas tablones o \textit{boards}. Sin embargo, los \textit{threads} en los \textit{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
 
-    El proyecto {\Dchan} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
+    El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
 
-    La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio \emph{Git} de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos.
+    La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio \emph{Git} de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos. De esta forma también es posible que surjan \textit{forks} \cite{wiki:fork} donde, utilizando este proyecto como base, cualquiera puede cambiar radicalmente el propósito original y aportar un enfoque completamente diferente.
+
+    \subsection{Partes del proyecto}
+
+    \begin{itemize}
+        \item Frontend
+        \begin{itemize}
+            \item Página web
+        \end{itemize}
+        \item Backend
+        \begin{itemize}
+            \item API
+            \item Base de datos
+        \end{itemize}
+    \end{itemize}
 
     \section{Ámbito de implantación}
 
@@ -70,7 +84,7 @@
 
     \bigskip\hrule\bigskip
 
-    Target: Personas a quien les importan mas las ideas, el debate en sí, y no las personas que sostienen esas ideas.
+    Target: Usuarios a quien les importan mas las ideas, el debate en sí, y no las personas que sostienen esas ideas. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias.
 
     \section{Recursos de hardware y software}
 
@@ -80,9 +94,21 @@
 
     \bigskip\hrule\bigskip
 
-    Escasos tanto para el desarrollo como para la implementación cliente/servidor.
+    Puesto que {\projectname} es un \emph{aplicación web} existen tres escenarios a tratar con respecto a los requisitos de hardware y software: \emph{desarrollo}, \emph{despliegue} e \emph{instalación por parte del usuario}. Inicialmente se pretende que en cualquier de ellos, estos recursos, sean lo más limitados y gratuitos posibles haciendo que el proyecto pueda ser accesible por cualquiera sin importar la calidad del hardware disponible.
+
+    \subsection{Requisitos de desarrollo}
+
+    Muy pocos.
+
+    \subsection{Requisitos de despliegue}
+
+    Algunos mas.
 
     Tanto el diseño como el desarrollo de la base de datos se realizarán pensando en un servidor \emph{MariaDB}, dejando así la puerta abierta a una mayor compatibilidad con \emph{MySQL} y otras tecnologías similares. Estará pensada para ser lo mas ligera posible, permitiendo que pueda ser alojada en el mismo equipo que el servidor \emph{HTTP}. Pero siempre permitiendo que pueda instalarse en un equipo diferente, no cerrando la puerta a incrementar las capacidades de la instancia para soportar mayores cantidades de tráfico.
+
+    \subsection{Requisitos de instalación por parte del usuario}
+
+    Firefox, HTML5.
 
     \section{Temporalización del desarrollo}
 
@@ -99,11 +125,11 @@
 
     \subsection{Diagrama de Gantt}
 
-    \dots
+    Pufff\dots
 
     \subsection{Diagrama PERT}
 
-    \dots
+    Meh\dots
 
     \section{Descripción de los datos base y resultados}
 
@@ -119,7 +145,7 @@
 
     El diseño de la base de datos, siempre enfocado hacia una mayor eficiencia y rapidez en la lectura y escritura de los datos, está dividida en tres tablas: \textit{BOARD}, \textit{THREAD} y \textit{POST}. Este diseño intenta compartimentar al máximo las diferentes partes de la página con el mínimo acoplamiento entre la s tablas para evitar hacer \textit{joins} innecesarios, que supondrían una mayor carga para el servidor.
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \begin{tikzpicture}[auto, node distance=1.5cm]
             \node[entity] (board) {BOARD};
@@ -130,7 +156,7 @@
             \node[entity] (post) [above = of has2] {POST};
             \path (has2) edge node {1} (thread) edge node {\(n\)} (post);
         \end{tikzpicture}
-        \caption{Diagrama Entidad-Relación de la base de datos de \Dchan.}
+        \caption{Diagrama Entidad-Relación de la base de datos de \projectname}
         \label{er:diagram}
     \end{figure}
 
@@ -171,7 +197,13 @@
         \item \textbf{thread} BIGINT FOREIGN KEY REF. THREAD(id)
     \end{itemize}
 
-    \lstinputlisting[language=SQL, style=javastyle, caption=Ejemplo del procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
+    \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
+
+    \subsection{Resultados}
+
+    Resultados de algunos de los trozos de código que muestro, por ejemplo, algún \textit{JSON} que devuelva la \textit{API}.
+
+    ¿Capturas de pantalla con ejemplos del funcionamiento de la web, formulario para crear thread, post; portada, lista de boards; el contenido de un thread de ejemplo? ¿Puede que esto vaya en el siguiente apartado? (Preguntar a MJ)
 
     \section{Relación entre dispositivos y programa o rutinas}
 
