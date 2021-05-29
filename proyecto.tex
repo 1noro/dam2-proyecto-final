@@ -64,30 +64,22 @@
 
     \subsection{Partes del proyecto}
 
-    % \begin{itemize}
-    %     \item Frontend
-    %     \begin{itemize}
-    %         \item Página web
-    %     \end{itemize}
-    %     \item Backend
-    %     \begin{itemize}
-    %         \item API
-    %         \item Base de datos
-    %     \end{itemize}
-    % \end{itemize}
-
-    % \begin{figure}[ht]
-    %     \centering
-    %     \begin{tikzpicture}[node distance=2.0cm]
-    %         \node (A) at (0, 0) {A};
-    %         \node (B) at (1, 1) {B};
-    %         \node (C) at (2, 1.5) {C};
-    %         \node (D) at (3, 0) {D};
-    %         \draw[->, to path={-| (\tikztotarget)}] (A) edge (B) (B) edge (C) (C) edge (D);
-    %     \end{tikzpicture}
-    %     \caption{Relaciones entre las partes del proyecto}
-    %     \label{project:schema}
-    % \end{figure}
+    \begin{figure}[ht]
+        \centering
+        % para poder usar > y < en el draw
+        % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+        \shorthandoff{>}\shorthandoff{<}
+        \begin{tikzpicture}[node distance=2.0cm]
+            \node (A) {Cliente Web};
+            \node (B) [right=of A] {API};
+            \node (C) [right=of B] {Base de Datos};
+            \draw[<->, thick] (A) -- (B);
+            \draw[<->, thick] (B) -- (C);
+        \end{tikzpicture}
+        \shorthandon{>}\shorthandon{<}
+        \caption{Relaciones entre las partes del proyecto}
+        \label{project:schema}
+    \end{figure}
 
     El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Rust} para garantizar una mayor eficiencia en la respuesta, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos}, corriendo sobre un servidor \emph{MariaDB}, almacenará todos los datos de la aplicación en tablas relacionadas para poder acceder a ellos de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los mismos.
 
