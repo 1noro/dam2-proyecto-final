@@ -66,22 +66,22 @@
 
     \begin{figure}[ht]
         \centering
+        \caption{Relaciones entre las partes del proyecto}\bigskip
+        \label{project:schema}
         % para poder usar > y < en el draw
         % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
         \shorthandoff{>}\shorthandoff{<}
-        \begin{tikzpicture}[node distance=2.0cm]
-            \node (A) {Cliente Web};
-            \node (B) [right=of A] {API};
-            \node (C) [right=of B] {Base de Datos};
-            \draw[<->, thick] (A) -- (B);
-            \draw[<->, thick] (B) -- (C);
+        \begin{tikzpicture}[node distance=1.5cm]
+            \node (web) {Webpage};
+            \node (api) [right=of web] {API};
+            \node (db) [right=of api] {Database};
+            \draw[<->, thick] (web) -- (api);
+            \draw[<->, thick] (api) -- (db);
         \end{tikzpicture}
         \shorthandon{>}\shorthandon{<}
-        \caption{Relaciones entre las partes del proyecto}
-        \label{project:schema}
     \end{figure}
 
-    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Rust} para garantizar una mayor eficiencia en la respuesta, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos}, corriendo sobre un servidor \emph{MariaDB}, almacenará todos los datos de la aplicación en tablas relacionadas para poder acceder a ellos de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los mismos.
+    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Rust} para garantizar una mayor eficiencia en la respuesta, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos.
 
     La grán ventaja de utilizar un \emph{API} en el \textit{backend} es que, de esta forma se abre la posibilidad a la aparición de clientes programados por terceros que interactúen con los datos sin necesidad de pasar por la web. Haciendo muy portable el proyecto hacia nuevas formas de presentarse a los usuarios, como por ejemplo, en forma de app movil o aplicación de escritório.
 
@@ -91,7 +91,9 @@
 
     \bigskip\hrule\bigskip
 
-    Target: Usuarios a quien les importan mas las ideas, el debate en sí, y no las personas que sostienen esas ideas. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias.
+    {\projectname} será administrado por una organización sin ánimo de lucro (\textit{The {\projectname} Foundation}), creada específicamente con la finalidad de asegurar la libertad, independencia y neutralidad del proyecto, así como mantenerlo ajeno a todo interés económico, político y personal que pueda derivar de una administración centrada en una única o un reducido número de personas. Imitando así modelos como los implementados en \emph{Wikimedia} \cite{wikimedia:about} o \emph{The Internet Archive} \cite{internetarchive:about}. Esta será la encargada tanto de la parte financiera, administrando las donaciones que se puedan recibir por parte de los usuarios, como la parte tecnológica, ofreciendo al proyecto de la infraestructura física y el mantenimiento necesario para asegurar su correcto funcionamiento.
+
+    Este proyecto va dirigido a usuarios que les importan mas las ideas --el debate en sí-- y no las personas que sostienen esas ideas, gente de todas las edades que quiera compartir sus opiniones y experiencias con una gran comunidad de distribuida por todo el mundo. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias en el ámbito personal, instigadas por lo que uno piensa.
 
     \section{Recursos de hardware y software}
 
@@ -154,6 +156,8 @@
 
     \begin{figure}[ht]
         \centering
+        \caption{Diagrama Entidad-Relación de la base de datos de \projectname}\bigskip
+        \label{er:diagram}
         \begin{tikzpicture}[auto, node distance=1.5cm]
             \node[entity] (board) {BOARD};
             \node[relationship] (has1) [below = of board] {has};
@@ -163,8 +167,6 @@
             \node[entity] (post) [above = of has2] {POST};
             \path (has2) edge node {1} (thread) edge node {\(n\)} (post);
         \end{tikzpicture}
-        \caption{Diagrama Entidad-Relación de la base de datos de \projectname}
-        \label{er:diagram}
     \end{figure}
 
     En el diagrama \emph{ER} de la figura \ref{er:diagram} no se han dibujado los atributos de las entidades con el fin de profundizar en ellos a continuación con el mayor detalle posible.
