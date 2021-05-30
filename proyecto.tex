@@ -1,4 +1,6 @@
 \documentclass[12pt,a4paper,titlepage]{article}
+% para que '{' y '}' se puedan imprimir en texttt
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 % acentos en la bibliografía
@@ -147,13 +149,9 @@
         \item (5d) Despliegue de la aplicación en el entorno del servidor.
     \end{enumerate}
 
-    \subsection{Diagrama de Gantt}
+    Diagrama de Gantt\dots
 
-    Esperando al final\dots
-
-    \subsection{Diagrama PERT}
-
-    Esperando al final\dots
+    Diagrama PERT\dots
 
     \section{Descripción de los datos base y resultados}
 
@@ -171,7 +169,41 @@
 
     \subsection{\textit{API}}
 
-    Texto introductorio\dots
+    Definición de los \textit{endpoints} de la \textit{API} basada en el estándar \textit{Open API} versión 3.0.3 \cite{swagger:specification}.
+
+    \begin{itemize}
+        \item (GET) \texttt{/board} -- Devuelve la lista de todos los \textit{boards}.
+        \begin{itemize}
+            \item Respuestas
+            \begin{itemize}
+                \item \texttt{200} -- \texttt{application/json} -- Un array con los \textit{boards} y sus atributos.
+            \end{itemize}
+        \end{itemize}
+        \item (GET) \texttt{/\{slug\}/thread} -- Devuelve la lista de todos los \textit{threads} dentro de un \textit{board}, ordenados desde el mas reciente al mas antiguo.
+        \begin{itemize}
+            \item Parámetros
+            \begin{itemize}
+                \item \texttt{division} -- number, query -- Número de \textit{threads} que quieres que aparezcan por página.
+                \item \texttt{page} -- number, query -- Número de página del \textit{board} que quieres ver, en base a la división anterior.
+            \end{itemize}
+        \end{itemize}
+        \begin{itemize}
+            \item Respuestas
+            \begin{itemize}
+                \item \texttt{200} -- \texttt{application/json} -- Un array con los \textit{threads} y su primer y últimos cinco \textit{posts} (a modo de resumen).
+                \item \texttt{400} -- \texttt{application/json} -- Cuando los \textit{query params} tienen un formato erróneo.
+                \item \texttt{404} -- \texttt{application/json} -- Cuando solicitas un \textit{slug} o una página que no existe.
+            \end{itemize}
+        \end{itemize}
+        \item (GET) \texttt{/\{slug\}/thread/\{id\}} -- Devuelve la lista de todos los \textit{posts} de un \textit{thread} dado.
+        \begin{itemize}
+            \item Respuestas
+            \begin{itemize}
+                \item \texttt{200} -- \texttt{application/json} -- Un array con los \textit{posts} ordenados de mas antíguo a mas reciente.
+                \item \texttt{404} -- \texttt{application/json} -- Cuando solicitas un \textit{slug} o un \textit{thread} que no existe.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
 
     \subsection{Base de datos}
 
