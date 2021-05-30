@@ -64,6 +64,8 @@
 
     \subsection{Partes del proyecto}
 
+    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Rust} para garantizar una mayor eficiencia en la respuesta, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos. Observando la figura \ref{project:schema} se puede observar de forma gráfica cómo se relacionan entre sí estas tres partes.
+
     \begin{figure}[ht]
         \centering
         \caption{Relaciones entre las partes del proyecto}\bigskip
@@ -81,9 +83,7 @@
         \shorthandon{>}\shorthandon{<}
     \end{figure}
 
-    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Rust} para garantizar una mayor eficiencia en la respuesta, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos.
-
-    La grán ventaja de utilizar un \emph{API} en el \textit{backend} es que, de esta forma se abre la posibilidad a la aparición de clientes programados por terceros que interactúen con los datos sin necesidad de pasar por la web. Haciendo muy portable el proyecto hacia nuevas formas de presentarse a los usuarios, como por ejemplo, en forma de app movil o aplicación de escritório.
+    La grán ventaja de utilizar un \emph{API} en el \textit{backend} es que, de esta forma se abre la posibilidad a la aparición de clientes programados por terceros que interactúen con los datos a través de un interfaz común para todos ellos. Haciendo muy portable el proyecto hacia nuevos entornos, como por ejemplo, en forma de app movil, aplicación de escritório u otras interfaces web. Asimismo, el hecho de independizar por completo el cliente del servidor permite que futuras versiones puedan prescindir de alguna de las partes con mucha facilidad y re-implementarla al gusto, facilitando al máximo la re-utilización del código.
 
     \section{Ámbito de implantación}
 
