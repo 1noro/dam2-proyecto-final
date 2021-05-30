@@ -18,7 +18,7 @@
 % mostrar bloques de código
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Ejemplo}
-\renewcommand{\lstlistlistingname}{Bloques de código}
+\renewcommand{\lstlistlistingname}{Ejemplos de código}
 % estilo de código para JavaScript
 % (https://www.youtube.com/watch?v=qxkQgG1Y0bY)
 \lstdefinestyle{javastyle}{
@@ -97,19 +97,19 @@
     
     Este proyecto va dirigido a usuarios que les importan mas las ideas --el debate en sí-- y no las personas que sostienen esas ideas, gente de todas las edades que quiera compartir sus opiniones y experiencias con una gran comunidad de distribuida por todo el mundo. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias en el ámbito personal, instigadas por lo que uno piensa.
 
-    \section{Recursos de hardware y software}
+    \section{Recursos de \textit{hardware} y \textit{software}}
 
-    Se describirán los requisitos mínimos y los requisitos recomendados de hardware, tanto para el desarrollo de la aplicación, como para su instalación y ejecución.
+    Se describirán los requisitos mínimos y los requisitos recomendados de \textit{hardware}, tanto para el desarrollo de la aplicación, como para su instalación y ejecución.
 
-    Se describirán las necesidades de software requeridas para el desarrollo de la aplicación.
+    Se describirán las necesidades de \textit{software} requeridas para el desarrollo de la aplicación.
 
     \bigskip\hrule\bigskip
 
-    Puesto que {\projectname} es un \emph{aplicación web} existen tres escenarios a tratar con respecto a los requisitos de hardware y software: \emph{desarrollo}, \emph{despliegue} e \emph{instalación por parte del usuario}. Inicialmente se pretende que en cualquier de ellos, estos recursos, sean lo más limitados y gratuitos posibles haciendo que el proyecto pueda ser accesible por cualquiera sin importar la calidad del hardware disponible.
+    Puesto que {\projectname} es un \emph{aplicación web} existen tres escenarios a tratar con respecto a los requisitos de \textit{hardware} y software: \textbf{desarrollo}, \textbf{despliegue} e \textbf{instalación por parte del usuario}. Inicialmente se pretende que en cualquier de ellos, estos recursos, sean lo más limitados y gratuitos posibles haciendo que el proyecto pueda ser accesible por cualquiera sin importar la calidad del \textit{hardware} disponible.
 
     \subsection{Requisitos de desarrollo}
 
-    Muy pocos.
+    Con respecto al \textit{hardware}
 
     \subsection{Requisitos de despliegue}
 
@@ -130,8 +130,17 @@
     Tareas a realizar:
 
     \begin{enumerate}
-        \item Empezar
-        \item Acabar
+        \item (2d\footnote{Unidades en días.}) \textit{Setup} del entorno de desarrollo (\textit{hardware} y \textit{software}).
+        \item (5d) Diseño de \textit{mockups} para las pantallas de la web.
+        \item (5d) Definición de los \textit{endpoints} de la \textit{API} con un \textit{swagger}.
+        \item (5d) Implementación de la base de datos (\textit{DDL}).
+        \item (3d) Desarrollo de la conexión de la \textit{API} con la base de datos.
+        \item (4d) Implementación de los \textit{endpoints} de la \textit{API}.
+        \item (2d) Desarrollo de la estructura y estilos básicos de la web.
+        \item (3d) Desarrollo de la conexión de la web con la \textit{API}.
+        \item (3d) Finalización de los estilos en la web.
+        \item (5d) Setup del entorno del servidor (\textit{hardware} y \textit{software}).
+        \item (5d) Despliegue de la aplicación en el entorno del servidor.
     \end{enumerate}
 
     \subsection{Diagrama de Gantt}
@@ -152,7 +161,15 @@
 
     Texto introductorio\dots
 
-    \subsection{Descripción de la base de datos}
+    \subsection{Página web}
+
+    Texto introductorio\dots
+
+    \subsection{\textit{API}}
+
+    Texto introductorio\dots
+
+    \subsection{Base de datos}
 
     El diseño de la base de datos, siempre enfocado hacia una mayor eficiencia y rapidez en la lectura y escritura de los datos, está dividida en tres tablas: \textit{BOARD}, \textit{THREAD} y \textit{POST}. Este diseño intenta compartimentar al máximo las diferentes partes de la página con el mínimo acoplamiento entre la s tablas para evitar hacer \textit{joins} innecesarios, que supondrían una mayor carga para el servidor.
 
@@ -210,35 +227,35 @@
 
     \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
 
-    \subsection{Resultados}
+    % \subsection{Resultados}
 
-    Resultados de algunos de los trozos de código que muestro, por ejemplo, algún \textit{JSON} que devuelva la \textit{API}.
+    % Resultados de algunos de los trozos de código que muestro, por ejemplo, algún \textit{JSON} que devuelva la \textit{API}.
 
-    ¿Capturas de pantalla con ejemplos del funcionamiento de la web, formulario para crear thread, post; portada, lista de boards; el contenido de un thread de ejemplo? ¿Puede que esto vaya en el siguiente apartado? (Preguntar a MJ)
+    % ¿Capturas de pantalla con ejemplos del funcionamiento de la web, formulario para crear thread, post; portada, lista de boards; el contenido de un thread de ejemplo? ¿Puede que esto vaya en el siguiente apartado? (Preguntar a MJ)
 
     \section{Relación entre dispositivos y programa o rutinas}
 
-    Se identificarán los componentes que comunican el paquete o aplicación software desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc.
+    Se identificarán los componentes que comunican el paquete o aplicación \textit{software} desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc.
 
-    Se identificarán los componentes software (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
+    Se identificarán los componentes \textit{software} (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
 
     \bigskip\hrule\bigskip
 
-    Texto introductorio\dots
+    etc\dots
 
     \lstinputlisting[language=Java, style=javastyle, caption=Las funciones de ejemplo, label=example1]{code/example1.js}
 
+    \newpage
+
+    % - índice de bloques de código
+    \lstlistoflistings
+    % para listar esta sección en el tableofcontents
+    \addcontentsline{toc}{section}{Ejemplos de código}
     \newpage
 
     % - bibliografía
     \printbibliography
     % para listar esta sección en el tableofcontents
     \addcontentsline{toc}{section}{Referencias}
-    \newpage
-
-    % - índice de bloques de código
-    \lstlistoflistings
-    % para listar esta sección en el tableofcontents
-    \addcontentsline{toc}{section}{Índice de bloques de código}
 
 \end{document}
