@@ -87,9 +87,9 @@
 
     \section{Ámbito de implantación}
 
-    Deberá describirse el lugar (empresa, organización, sector...) en el que se implantará el proyecto y con qué objetivo, además de indicar a quién va dirigida la aplicación, es decir, identificar quién o quiénes serán los principales usuarios de la misma.
+    % Deberá describirse el lugar (empresa, organización, sector...) en el que se implantará el proyecto y con qué objetivo, además de indicar a quién va dirigida la aplicación, es decir, identificar quién o quiénes serán los principales usuarios de la misma.
 
-    \bigskip\hrule\bigskip
+    % \bigskip\hrule\bigskip
 
     {\projectname} será administrado por una organización sin ánimo de lucro (\textit{The {\projectname} Foundation}), creada específicamente con la finalidad de asegurar la libertad, independencia y neutralidad del proyecto, así como mantenerlo ajeno a todo interés económico, político y personal que pueda derivar de una administración centrada en una única o un reducido número de personas. Imitando así modelos como los implementados en \emph{Wikimedia} \cite{wikimedia:about} o \emph{The Internet Archive} \cite{internetarchive:about}. Esta será la encargada tanto de la parte financiera, administrando las donaciones que se puedan recibir por parte de los usuarios, como la parte tecnológica, ofreciendo al proyecto de la infraestructura física y el mantenimiento necesario para asegurar su correcto funcionamiento.
     
@@ -109,7 +109,9 @@
 
     \subsection{Requisitos de desarrollo}
 
-    Con respecto al \textit{hardware}
+    Los requisitos para el desarrollo de este proyecto no son para nada exigentes, todas las partes se pueden montar e interconectar en un mismo equipo con, prácticamente, cualquier especificación de \textit{hardware}. Unos requisitos mínimos podrían ser, un \textit{Intel Core i5} o \textit{i3} con al menos 4 GB de memoria \textit{RAM}, 5 GB de espacio libre en el dísco duro y, como requisito a parte del hardware, es indispensable una conexión estable a internet en el puesto de trabajo.
+
+    Además del \textit{hardware}, los siguientes programas son necesarios para poder montar un entorno de desarrollo adecuado y funcional: un servidor de base de datos \emph{MariaDB} o \emph{MySQL}, para poder ejecutar consultas \emph{SQL} contra él en el entorno local, emulando de la forma mas directa como se realizarán una vez se haya desplegado toda la infraestructura; un servidor \textit{HTTP}, como puede ser \emph{NGINX} o \emph{Apache2}, para poder simular un entorno similar al servidor donde se va a desplegar la web al final del desarrollo. Por otra parte, se recomiendan algunos programas opcionales que quedan a elección del desarrollador, com puede ser, un editor de código adaptado para las diferentes tecnologías y lenguajes utilizados en el proyecto (\emph{Visual Studio Code OSS}, \emph{Atom}, \emph{Geany}\dots); un cliente de bases de datos como \emph{DBeaver} o \emph{MySQL Workbench}, para administrar de manera mas sencilla la base de datos en las fases mas tempranas del desarrollo. Y como apunte final sería aconsejable realizar todo el proceso de desarrollo sobre una distribución de \emph{GUN/Linux} para simplificar al máximo la portabilidad al entorno del servidor cuando el proyecto se pase a fase de \emph{producción}.
 
     \subsection{Requisitos de despliegue}
 
