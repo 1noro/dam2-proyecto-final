@@ -252,12 +252,12 @@
         \label{er:diagram}
         \begin{tikzpicture}[auto, node distance=1.5cm]
             \node[entity] (board) {BOARD};
-            \node[relationship] (has1) [below = of board] {has};
+            \node[relationship, label=below:1:\(n\)] (has1) [below = of board] {has};
             \node[entity] (thread) [right = of has1] {THREAD};
-            \path (has1) edge node {1} (board) edge node {\(n\)} (thread);
-            \node[relationship] (has2) [right = of thread] {has};
+            \path (has1) edge (board) edge (thread);
+            \node[relationship, label=below:1:\(n\)] (has2) [right = of thread] {has};
             \node[entity] (post) [above = of has2] {POST};
-            \path (has2) edge node {1} (thread) edge node {\(n\)} (post);
+            \path (has2) edge (thread) edge (post);
         \end{tikzpicture}
     \end{figure}
 
