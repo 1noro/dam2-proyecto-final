@@ -11,6 +11,8 @@
 % bibliografía (style=ieee: referencias por orden de aparición)
 \usepackage[backend=biber, style=ieee]{biblatex}
 \addbibresource{proyecto.bib}
+% imágenes
+\usepackage{graphicx}
 % diagramas (https://texample.net/tikz/examples/er-diagram/)
 \usepackage{tikz}
 \usetikzlibrary{er, positioning}
@@ -61,29 +63,26 @@
 
     Un tablón de imágenes (también conocido por su nombre en inglés: \textit{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\textit{threads}) de diferentes temáticas en secciones, llamadas tablones o \textit{boards}. Sin embargo, los \textit{threads} en los \textit{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
 
+    \begin{figure}[ht]
+        \centering
+        \caption{Vista del board \texttt{/w/} de \textit{4chan}}\bigskip
+        \label{4chan:board}
+        \includegraphics[width=1.0\textwidth]{media/4chan-board.png}
+    \end{figure}
+
     El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
 
     La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio \emph{Git} de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos. De esta forma también es posible que surjan \textit{forks} \cite{wiki:fork} donde, utilizando este proyecto como base, cualquiera puede cambiar radicalmente el propósito original y aportar un enfoque completamente diferente.
 
     \subsection{Partes del proyecto}
 
-    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Rust} para garantizar una mayor eficiencia en la respuesta, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos. Observando la figura \ref{project:schema} se puede observar de forma gráfica cómo se relacionan entre sí estas tres partes.
+    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Python} utilizando la librería \textit{Flask}, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos. Observando la figura \ref{project:schema} se puede observar de forma gráfica cómo se relacionan entre sí estas tres partes.
 
     \begin{figure}[ht]
         \centering
-        \caption{Relaciones entre las partes del proyecto}\bigskip
-        \label{project:schema}
-        % para poder usar > y < en el draw
-        % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
-        \shorthandoff{>}\shorthandoff{<}
-        \begin{tikzpicture}[node distance=1.5cm]
-            \node (web) {Webpage};
-            \node (api) [right=of web] {API};
-            \node (db) [right=of api] {Database};
-            \draw[<->, thick] (web) -- (api);
-            \draw[<->, thick] (api) -- (db);
-        \end{tikzpicture}
-        \shorthandon{>}\shorthandon{<}
+        \caption{Vista del la portada de \textit{2chan}}\bigskip
+        \label{2chan:home}
+        \includegraphics[width=1.0\textwidth]{media/2chan-home.png}
     \end{figure}
 
     La grán ventaja de utilizar un \emph{API} en el \textit{backend} es que, de esta forma se abre la posibilidad a la aparición de clientes programados por terceros que interactúen con los datos a través de un interfaz común para todos ellos. Haciendo muy portable el proyecto hacia nuevos entornos, como por ejemplo, en forma de app movil, aplicación de escritório u otras interfaces web. Asimismo, el hecho de independizar por completo el cliente del servidor permite que futuras versiones puedan prescindir de alguna de las partes con mucha facilidad y re-implementarla al gusto, facilitando al máximo la re-utilización del código.
@@ -319,6 +318,23 @@
     Ejemplo: llamada a la API desde JS hasta MySQL.
 
     \lstinputlisting[language=Java, style=javastyle, caption=Obtengo la lista de \textit{threads} que hay en un \textit{board}, label=getBoardThreads]{code/getBoardThreads.js}
+
+    \begin{figure}[ht]
+        \centering
+        \caption{Relaciones entre las partes del proyecto}\bigskip
+        \label{project:schema}
+        % para poder usar > y < en el draw
+        % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+        \shorthandoff{>}\shorthandoff{<}
+        \begin{tikzpicture}[node distance=1.5cm]
+            \node (web) {Webpage};
+            \node (api) [right=of web] {API};
+            \node (db) [right=of api] {Database};
+            \draw[<->, thick] (web) -- (api);
+            \draw[<->, thick] (api) -- (db);
+        \end{tikzpicture}
+        \shorthandon{>}\shorthandon{<}
+    \end{figure}
 
     \newpage
 
