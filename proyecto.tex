@@ -17,6 +17,7 @@
 
 % mostrar colores
 \usepackage{xcolor}
+% (revisar: https://github.com/denki/listings-rust)
 % mostrar bloques de código
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Ejemplo}
@@ -315,7 +316,9 @@
 
     etc\dots
 
-    \lstinputlisting[language=Java, style=javastyle, caption=Las funciones de ejemplo, label=example1]{code/example1.js}
+    Ejemplo: llamada a la API desde JS hasta MySQL.
+
+    \lstinputlisting[language=Java, style=javastyle, caption=Obtengo la lista de \textit{threads} que hay en un \textit{board}, label=getBoardThreads]{code/getBoardThreads.js}
 
     \newpage
 
