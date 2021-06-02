@@ -145,6 +145,7 @@
         \item (2d) Desarrollo de la estructura y estilos básicos de la web.
         \item (3d) Desarrollo de la conexión de la web con la \textit{API}.
         \item (3d) Finalización de los estilos en la web.
+        \item (2d) Internacionalización de los textos de la web.
         \item (5d) Setup del entorno del servidor (\textit{hardware} y \textit{software}).
         \item (5d) Despliegue de la aplicación en el entorno del servidor.
     \end{enumerate}
@@ -179,6 +180,11 @@
                 \item \texttt{200} -- \texttt{application/json} -- Un array con los \textit{boards} y sus atributos.
             \end{itemize}
         \end{itemize}
+    \end{itemize}
+
+    \lstinputlisting[language=Java, style=javastyle, caption=Respuesta \texttt{200} \textit{OK} en \textit{JSON} del endpoint (GET) \texttt{/board}, label=get:board:response]{code/get-board-response.json}
+
+    \begin{itemize}
         \item (GET) \texttt{/\{slug\}/thread} -- Devuelve la lista de todos los \textit{threads} dentro de un \textit{board}, ordenados desde el mas reciente al mas antiguo.
         \begin{itemize}
             \item Parámetros
@@ -214,6 +220,11 @@
                 \item \texttt{404} -- \texttt{application/json} -- Cuando se envía un \textit{slug} que no existe.
             \end{itemize}
         \end{itemize}
+    \end{itemize}
+
+    \lstinputlisting[language=Java, style=javastyle, caption=\textit{Request body} en \textit{JSON} de llamada a (POST) \texttt{/x/thread}, label=post:thread:requestbody]{code/post-thread-requestbody.json}
+
+    \begin{itemize}
         \item (GET) \texttt{/\{slug\}/thread/\{id\}} -- Devuelve la lista de todos los \textit{posts} de un \textit{thread} dado.
         \begin{itemize}
             \item Respuestas

@@ -1,0 +1,9 @@
+[
+  { "slug": "a", "name": "Anime & Manga" },
+  { "slug": "b", "name": "Random" },
+  { "slug": "g", "name": "Technology" },
+  { "slug": "news", "name": "Current News" },
+  { "slug": "vr", "name": "Retro Games" },
+  { "slug": "wg", "name": "Wallpapers/General" },
+  { "slug": "x", "name": "Paranormal" }
+]
