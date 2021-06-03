@@ -119,6 +119,8 @@
 
     Algunos mas. \underline{(mínimos y recomendados)}
 
+    El despliegue de la aplicación en el ámbito del servidor está pensado para realizarse en contenedores de \textit{Docker} \cite{docker:overview} haciendo el entorno lo más ligero y portable posible, permitiendo una grán escalabilidad de cara al futuro. Al principio, el proyecto se podrá montar sobre una única máquina, y gracias a estar pensado para ser muy ligero, esta máquina no requerirá de unas características desmesuradas. Se podrá desplegar el proyecto en cualquier máquina virtual en la nube, por ejemplo en una instancia de \textit{Amazon Web Services} (\textit{AWS}), \textit{Google Cloud}, \textit{Digital Ocean} o \textit{Linode}; pero también en cualquier máquina virtual en un servidor propio. Además, si se prefiere, se puede instalar el servicio en una máquina física o distribuirlo por un entorno de varios servidores, para poder atender grandes picos de tráfico.
+
     Tanto el diseño como el desarrollo de la base de datos se realizarán pensando en un servidor \emph{MariaDB}, dejando así la puerta abierta a una mayor compatibilidad con \emph{MySQL} y otras tecnologías similares. Estará pensada para ser lo mas ligera posible, permitiendo que pueda ser alojada en el mismo equipo que el servidor \emph{HTTP}. Pero siempre permitiendo que pueda instalarse en un equipo diferente, no cerrando la puerta a incrementar las capacidades de la instancia para soportar mayores cantidades de tráfico.
 
     \subsection{Requisitos de instalación por parte del usuario}
@@ -163,6 +165,8 @@
     \bigskip\hrule\bigskip
 
     Texto introductorio\dots
+
+    Mockups de formulario de nuevo thread t/o post aquí o en el aptdo 6.
 
     \subsection{Página web}
 
@@ -287,9 +291,9 @@
         \item \textbf{id} BIGINT PRIMARY KEY
         \item \textbf{subject} VARCHAR(256) DEFAULT `' NOT NULL
         \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
-        \item \textbf{comment} VARCHAR(512) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{comment} VARCHAR(512) NOT NULL
         \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
-        \item \textbf{timestamp} DATETIME DEFAULT NOW() NOT NULL
+        \item \textbf{published} DATETIME DEFAULT CURRENT\_TIMESTAMP NOT NULL
         \item \textbf{sticky} BOOLEAN DEFAULT FALSE NOT NULL
         \item \textbf{closed} BOOLEAN DEFAULT FALSE NOT NULL
         \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
@@ -303,7 +307,7 @@
         \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
         \item \textbf{comment} VARCHAR(512) DEFAULT `Anonymous' NOT NULL
         \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
-        \item \textbf{timestamp} DATETIME DEFAULT NOW() NOT NULL
+        \item \textbf{published} DATETIME DEFAULT CURRENT\_TIMESTAMP NOT NULL
         \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
         \item \textbf{thread} BIGINT FOREIGN KEY REF. THREAD(id)
     \end{itemize}
