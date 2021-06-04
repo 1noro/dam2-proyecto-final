@@ -15,7 +15,8 @@
 \usepackage{graphicx}
 % diagramas (https://texample.net/tikz/examples/er-diagram/)
 \usepackage{tikz}
-\usetikzlibrary{er, positioning}
+% \usetikzlibrary{er, positioning}
+\usetikzlibrary{er, positioning, babel, shapes.multipart}
 
 % mostrar colores
 \usepackage{xcolor}
@@ -136,24 +137,68 @@
     Lista de tareas a realizar y cuanto tiempo conlleva cada una:
 
     \begin{enumerate}
+        \renewcommand{\theenumi}{\Alph{enumi}} % abc enumeration
         \item (2d\footnote{Unidades de tiempo en días.}) \textit{Setup} del entorno de desarrollo (\textit{hardware} y \textit{software}).
         \item (5d) Diseño de \textit{mockups} para las pantallas de la web.
-        \item (5d) Definición de los \textit{endpoints} de la \textit{API} con un \textit{swagger}.
-        \item (5d) Implementación de la base de datos (\textit{DDL}).
+        \item (4d) Implementación de la base de datos (\textit{DDL}).
+        \item (5d) Implementación de los \textit{endpoints} de la \textit{API}.
         \item (3d) Desarrollo de la conexión de la \textit{API} con la base de datos.
-        \item (4d) Implementación de los \textit{endpoints} de la \textit{API}.
         \item (2d) Desarrollo de la estructura y estilos básicos de la web.
         \item (3d) Desarrollo de la conexión de la web con la \textit{API}.
         \item (3d) Finalización de los estilos en la web.
         \item (2d) Internacionalización de los textos de la web.
         \item (5d) Setup del entorno del servidor (\textit{hardware} y \textit{software}).
         \item (5d) Despliegue y publicación de la aplicación en el entorno del servidor.
-        \item (15d) Redacción y documentación del proyecto.
+        \item (10d) Redacción de la documentación del proyecto.
     \end{enumerate}
 
-    Diagrama de Gantt\dots
+    Nótese que las tareas de diseño de la base de datos y definición de los \textit{endpoints} de la \textit{API} no se tienen en cuenta en la planificación temporal, porque ya están realizadas en este documento.
 
-    Diagrama PERT\dots
+    
+
+    \begin{figure}[ht]
+        \centering
+        \caption{Diagrama PERT}\bigskip
+        \label{diagram:pert}
+        \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}, trinode/.style={circle split, draw, path picture={\draw (path picture bounding box.center)--(path picture bounding box.south);}}]
+            % level 0
+            \node[trinode] (n1) {1\nodepart{lower} 0\ \ 0};
+            % level 1
+            \node[trinode, below right=2.0of n1] (n2) {2\nodepart{lower} 2\ \ ?};
+            \draw[->] (n1)--(n2) node[midway, above right]{A(2)};
+            \node[trinode, below=of n1] (n3) {3\nodepart{lower} ?\ \ ?};
+            \draw[->] (n1)--(n3) node[midway, right]{B(?)};
+            \node[trinode, below left=2.0of n1] (n4) {4\nodepart{lower} ?\ \ ?};
+            \draw[->] (n1)--(n4) node[midway, above left]{J(?)};
+            % level 2
+            \node[trinode, below right=2.0of n2] (n5) {5\nodepart{lower} ?\ \ ?};
+            \draw[->] (n2)--(n5) node[midway, above right]{C(?)};
+            \node[trinode, below=of n2] (n6) {6\nodepart{lower} ?\ \ ?};
+            \draw[->] (n2)--(n6) node[midway, right]{D(?)};
+            \node[trinode, below=of n3] (n7) {7\nodepart{lower} ?\ \ ?};
+            \draw[->] (n3)--(n7) node[midway, right]{F(?)};
+            % level 3
+            \node[trinode, below right=2.0of n6] (n8) {8\nodepart{lower} ?\ \ ?};
+            \draw[->] (n6)--(n8) node[midway, above right]{E(?)};
+            \node[trinode, below left=2.0of n6] (n9) {9\nodepart{lower} ?\ \ ?};
+            \draw[->] (n6)--(n9) node[midway, below right]{G(?)};
+            % level 4
+            \node[trinode, below right=2.0of n9] (n10) {10\nodepart{lower} ?\ \ ?};
+            \draw[->] (n9)--(n10) node[midway, above right]{L(?)};
+            \node[trinode, below=of n9] (n11) {11\nodepart{lower} ?\ \ ?};
+            \draw[->] (n9)--(n11) node[midway, left]{H(?)};
+            % level 5
+            \node[trinode, below=of n11] (n12) {12\nodepart{lower} ?\ \ ?};
+            \draw[->] (n11)--(n12) node[midway, left]{H(?)};
+            % level 6
+            \node[trinode, below=of n12] (n13) {13\nodepart{lower} ?\ \ ?};
+            \draw[->] (n12)--(n13) node[midway, left]{K(?)};
+            % inter-level
+            \draw[->, dashed] (n4)--(n12) node[midway, left]{0};
+        \end{tikzpicture}
+    \end{figure}
+
+    Diagrama de Gantt\dots
 
     \section{Descripción de los datos base y resultados}
 
