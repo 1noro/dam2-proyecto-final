@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-06-04" view-index="0" gantt-divider-location="699" resource-divider-location="300" version="3.1.3100" locale="es_ES">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-06-03" view-index="0" gantt-divider-location="699" resource-divider-location="300" version="3.1.3100" locale="es_ES">
     <description/>
     <view zooming-state="default:0" id="gantt-chart">
         <field id="tpd3" name="Nombre" width="383" order="0"/>
@@ -83,10 +83,8 @@
         <task id="11" name="11 Setup del entorno del servidor" color="#8cb6ce" meeting="false" start="2021-06-08" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="12" name="12 Despliegue y publicación de la aplicación en el entorno del servidor" color="#8cb6ce" meeting="false" start="2021-07-06" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true"/>
-        <task id="99" name="13 Redacción y documentación del proyecto" color="#8cb6ce" meeting="false" start="2021-06-08" duration="20" complete="0" thirdDate="2021-06-02" thirdDate-constraint="0" expand="true">
-            <depend id="12" type="2" difference="0" hardness="Strong"/>
-        </task>
+        <task id="12" name="12 Despliegue y publicación de la aplicación en el entorno del servidor" color="#8cb6ce" meeting="false" start="2021-06-22" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true"/>
+        <task id="99" name="13 Redacción y documentación del proyecto" color="#8cb6ce" meeting="false" start="2021-06-08" duration="20" complete="0" thirdDate="2021-06-02" thirdDate-constraint="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
