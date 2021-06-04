@@ -70,13 +70,13 @@
         \includegraphics[width=1.0\textwidth]{media/4chan-board.png}
     \end{figure}
 
-    El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización mas reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado mas tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
+    El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización más reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado más tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
 
     La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio \emph{Git} de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos. De esta forma también es posible que surjan \textit{forks} \cite{wiki:fork} donde, utilizando este proyecto como base, cualquiera puede cambiar radicalmente el propósito original y aportar un enfoque completamente diferente.
 
     \subsection{Partes del proyecto}
 
-    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Python} utilizando la librería \textit{Flask}, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera mas eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos. Observando la figura \ref{project:schema} se puede observar de forma gráfica cómo se relacionan entre sí estas tres partes.
+    El proyecto consta de tres partes muy bien diferenciadas: la \textbf{página web}, la cual constituye el \textit{frontend}, desarrollada utilizando \emph{HTML5}, \emph{CSS3} y \emph{ECMAScript 6} (\emph{JavaScript}), es la encargada de lidiar cara a cara con el usuario final, mostrar los resultados de las llamadas a la \emph{API} y distribuir esas respuestas adecuadamente en la interfaz gráfica (\emph{GUI}); la \emph{\textbf{API}}, una de las dos partes del \textit{backend}, desarrollada utilizando el lenguaje \emph{Python} utilizando la librería \textit{Flask}, es la intermediaria entre la web y los datos almacenados, ofreciendo un estándar a la hora de consultar y modificar la información ofrecida por los usuarios; y la segunda parte del \textit{backend} es la \textbf{base de datos} que, corriendo sobre un servidor \emph{MariaDB}, almacenará toda la información de la aplicación en tablas relacionadas para poder acceder a ella de la manera más eficiente posible, garantizando siempre la integridad y la alta disponibilidad de los datos. Observando la figura \ref{project:schema} se puede observar de forma gráfica cómo se relacionan entre sí estas tres partes.
 
     \begin{figure}[ht]
         \centering
@@ -97,7 +97,7 @@
     
     El objetivo final pasa por establecer un lugar de debate e intercambio de opiniones abierto, libre y neutral; donde cada usuario pueda encontrar su rincón y hablar de lo que le apetezca con personas que comparten sus mismos gustos y aficiones. Y al mismo tiempo ofrecer espacios donde posiciones opuestas se enfrenten para que eventualmente se alcance un consenso común y beneficioso para ambas partes.
     
-    Este proyecto va dirigido a usuarios que les importan mas las ideas --el debate en sí-- y no las personas que sostienen esas ideas, gente de todas las edades que quiera compartir sus opiniones y experiencias con una gran comunidad de distribuida por todo el mundo. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias en el ámbito personal, instigadas por lo que uno piensa.
+    Este proyecto va dirigido a usuarios que les importan más las ideas --el debate en sí-- y no las personas que sostienen esas ideas, gente de todas las edades que quiera compartir sus opiniones y experiencias con una gran comunidad de distribuida por todo el mundo. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias en el ámbito personal, instigadas por lo que uno piensa.
 
     \section{Recursos de \textit{hardware} y \textit{software}}
 
@@ -113,17 +113,17 @@
 
     Los requisitos para el desarrollo de este proyecto no son para nada exigentes, todas las partes se pueden montar e interconectar en un mismo equipo con, prácticamente, cualquier especificación de \textit{hardware}. Unos requisitos mínimos podrían ser, un CPU de al menos cuatro núcleos y 2.0GHz de frecuencia, con al menos 4 GB de memoria \textit{RAM}, 10 GB de espacio libre en el dísco duro y, como requisito extra, es indispensable una conexión estable a internet en el puesto de trabajo, a ser posible de 50Mbps o superior. Alternativamente se recomienda lo siguiente: CPU con más de cuatro núcleos y frecuencia mínima cercana a 2.0GHz, 16Gb de \textit{RAM} y 50Gb de espacio libre en \textit{SSD}.
 
-    Además del \textit{hardware}, los siguientes programas son necesarios para poder montar un entorno de desarrollo adecuado y funcional: un servidor de base de datos \emph{MariaDB} o \emph{MySQL}, para poder ejecutar consultas \emph{SQL} contra él en el entorno local, emulando de la forma mas directa como se realizarán una vez se haya desplegado toda la infraestructura; un servidor \textit{HTTP}, como puede ser \emph{NGINX} o \emph{Apache2}, para poder simular un entorno similar al servidor donde se va a desplegar la web al final del desarrollo. Por otra parte, se recomiendan algunos programas opcionales que quedan a elección del desarrollador, com puede ser, un editor de código adaptado para las diferentes tecnologías y lenguajes utilizados en el proyecto (\emph{Visual Studio Code OSS}, \emph{Atom}, \emph{Geany}\dots); un cliente de bases de datos como \emph{DBeaver} o \emph{MySQL Workbench}, para administrar de manera mas sencilla la base de datos en las fases mas tempranas del desarrollo. Y como apunte final sería aconsejable realizar todo el proceso de desarrollo sobre una distribución de \emph{GUN/Linux} para simplificar al máximo la portabilidad al entorno del servidor cuando el proyecto se pase a fase de \emph{producción}.
+    Además del \textit{hardware}, los siguientes programas son necesarios para poder montar un entorno de desarrollo adecuado y funcional (todos ellos en sus versiones más recientes): un servidor de base de datos \emph{MariaDB} o \emph{MySQL}, para poder ejecutar consultas \emph{SQL} contra él en el entorno local, que gracias a \textit{Docker} \cite{docker:overview} se podrá emular de la forma más similar como se realizarán una vez se haya desplegado toda la infraestructura; un servidor \textit{HTTP}, también ``\textit{dockerizado}'', como puede ser \emph{NGINX} o \emph{Apache2}; y, por último será necesario un gestor de versiones como \textit{Git} encargado de gestionar las versiones y coordinar a las diferentes personas encargadas del desarrollo. Por otra parte, se recomiendan algunos programas opcionales que quedan a elección del desarrollador, com puede ser, un editor de código adaptado para las diferentes tecnologías y lenguajes utilizados en el proyecto (\emph{Visual Studio Code OSS}, \emph{Atom}, \emph{Geany}\dots); un cliente de bases de datos como \emph{DBeaver} o \emph{MySQL Workbench}, para administrar de manera más sencilla la base de datos en las fases más tempranas del desarrollo. Y como apunte final sería aconsejable realizar todo el proceso de desarrollo sobre una distribución de \emph{GUN/Linux} para simplificar al máximo la portabilidad al entorno del servidor cuando el proyecto se pase a fase de \emph{producción}.
 
     \subsection{Requisitos de despliegue}
 
-    El despliegue de la aplicación en el ámbito del servidor está pensado para realizarse en contenedores de \textit{Docker} \cite{docker:overview} sobre un SO \emph{GNU/Linux}, haciendo el entorno lo más ligero y portable posible, permitiendo una grán escalabilidad de cara al futuro. Al principio, el proyecto se podrá montar sobre una única máquina, y gracias a estar pensado para ser muy ligero, esta máquina no requerirá de unas características desmesuradas. Se podrá desplegar el proyecto en cualquier máquina virtual en la nube, por ejemplo en una instancia de \textit{Amazon Web Services} (\textit{AWS}), \textit{Google Cloud}, \textit{Digital Ocean} o \textit{Linode}; pero también en cualquier máquina virtual en un servidor propio. Además, si se prefiere, se puede instalar el servicio en una máquina física o distribuirlo por un entorno de varios servidores, en caso de prever grandes picos de tráfico. En cuanto al \textit{hardware} (virtualizado o físico) mínimo se necesitan al menos las siguientes características: un CPU de al menos cuatro núcleos y 2.0GHz de frecuencia, memoria \textit{RAM} de 8Gb o superior, 100Gb de espacio libre en dísco duro y, sobre todo 100Mbps de conexión estable a internet. Pero, sin embargo, se recomienda: CPU con más de cuatro núcleos y frecuencia mínima cercana a 2.0GHz, 32Gb de \textit{RAM}, 500Gb de espacio libre en \textit{SSD} y conexión redundante y estable de al menos 600Mbps.
+    El despliegue de la aplicación en el ámbito del servidor está pensado para realizarse en contenedores de \textit{Docker} sobre un SO \emph{GNU/Linux}, haciendo el entorno lo más ligero y portable posible, permitiendo una grán escalabilidad de cara al futuro. Al principio, el proyecto se podrá montar sobre una única máquina, y gracias a estar pensado para ser muy ligero, esta máquina no requerirá de unas características desmesuradas. Se podrá desplegar el proyecto en cualquier máquina virtual en la nube, por ejemplo en una instancia de \textit{Amazon Web Services} (\textit{AWS}), \textit{Google Cloud}, \textit{Digital Ocean} o \textit{Linode}; pero también en cualquier máquina virtual en un servidor propio. Además, si se prefiere, se puede instalar el servicio en una máquina física o distribuirlo por un entorno de varios servidores, en caso de prever grandes picos de tráfico. En cuanto al \textit{hardware} (virtualizado o físico) mínimo se necesitan al menos las siguientes características: un CPU de al menos cuatro núcleos y 2.0GHz de frecuencia, memoria \textit{RAM} de 8Gb o superior, 100Gb de espacio libre en dísco duro y, sobre todo 100Mbps de conexión estable a internet. Pero, sin embargo, se recomienda: CPU con más de cuatro núcleos y frecuencia mínima cercana a 2.0GHz, 32Gb de \textit{RAM}, 500Gb de espacio libre en \textit{SSD} y conexión redundante y estable de al menos 600Mbps.
 
-    Tanto el diseño como el desarrollo de la base de datos se realizarán pensando en un servidor \emph{MariaDB}, dejando así la puerta abierta a una mayor compatibilidad con \emph{MySQL} y otras tecnologías similares. Estará pensada para ser lo mas ligera posible, permitiendo que pueda ser alojada en el mismo equipo que el servidor \emph{HTTP}. este se espera que sea un \textit{NGINX} preferiblemente, o un \textit{Apache2} como segunda opción, los dos excelentes servidores libre utilizados tanto a nivel personal como profesional.
+    Tanto el diseño como el desarrollo de la base de datos se realizarán pensando en un servidor \emph{MariaDB}, dejando así la puerta abierta a una mayor compatibilidad con \emph{MySQL} y otras tecnologías similares. Estará pensada para ser lo más ligera posible, permitiendo que pueda ser alojada en el mismo equipo que el servidor \emph{HTTP}. este se espera que sea un \textit{NGINX} preferiblemente, o un \textit{Apache2} como segunda opción, los dos excelentes servidores libre utilizados tanto a nivel personal como profesional. Es importante hacer notar que las versiones de estos programas en el ámbito del servidor se deben tomar con mucha cautela, y se suelen escoger las marcadas con el \textit{tag} \textit{LTS} (\textit{Long Term Support}) para no sufrir cambios derivados de alguna futura actualización que puedan afectar al correcto funcionamiento de la aplicación.
 
     \subsection{Requisitos de instalación por parte del usuario}
 
-    Al ser una aplicación web no requiere de una instalación, como tal, en el equipo del usuario final. Pero si que necesita de unos requisitos mínimos que vienen definidos por las tecnologías utilizadas en la parte del \textit{frontend}. Por ejemplo, el usuario necesita tener instalado en su equipo por lo menos un navegador web que sea capaz de soportar código \emph{ECMAScript 6} para que el \emph{JavaScript} pueda funcionar sin ningún impedimento. Los navegadores mas modernos con motores como \emph{Gecko} (\emph{Mozilla Firefox}) o \emph{Webkit} (\emph{Google Chrome}, \emph{Opera}, \emph{Brave}\dots) son perfectamente compatibles con esta reciente tecnología.
+    Al ser una aplicación web no requiere de una instalación, como tal, en el equipo del usuario final. Pero si que necesita de unos requisitos mínimos que vienen definidos por las tecnologías utilizadas en la parte del \textit{frontend}. Por ejemplo, el usuario necesita tener instalado en su equipo por lo menos un navegador web que sea capaz de soportar código \emph{ECMAScript 6} para que el \emph{JavaScript} pueda funcionar sin ningún impedimento. Los navegadores más modernos, en sus versiones más actualizadas, con motores como \emph{Gecko} (\emph{Mozilla Firefox}) o \emph{Webkit} (\emph{Google Chrome}, \emph{Opera}, \emph{Brave}\dots) son perfectamente compatibles con esta reciente tecnología.
 
     Con respecto a los requisitos \textit{hardware}, no se requiere nada fuera de lo común, se considera que hoy en día todo dispositivo (\textit{PC} o \textit{smartphone}) posee las capacidades básicas para abrir un navegador, acceder a una página web y leer texto, visualizar imágenes o pequeños vídeos.
 
@@ -147,7 +147,8 @@
         \item (3d) Finalización de los estilos en la web.
         \item (2d) Internacionalización de los textos de la web.
         \item (5d) Setup del entorno del servidor (\textit{hardware} y \textit{software}).
-        \item (5d) Despliegue de la aplicación en el entorno del servidor.
+        \item (5d) Despliegue y publicación de la aplicación en el entorno del servidor.
+        \item (15d) Redacción y documentación del proyecto.
     \end{enumerate}
 
     Diagrama de Gantt\dots
@@ -164,11 +165,11 @@
 
     Texto introductorio\dots
 
-    Mockups de formulario de nuevo thread t/o post aquí o en el aptdo 6.
-
     \subsection{Página web}
 
     Texto introductorio, alguna clase de JS o alguna estructura a de código que se comunique con la API\dots
+
+    No se si merece la pena mencionarlo aquí, puede que con el apdo 6 llegue.
 
     \subsection{\textit{API}}
 
@@ -187,7 +188,7 @@
     \lstinputlisting[language=Java, style=javastyle, caption=Respuesta \texttt{200} \textit{OK} en \textit{JSON} del endpoint (GET) \texttt{/board}, label=get:board:response]{code/get-board-response.json}
 
     \begin{itemize}
-        \item (GET) \texttt{/\{slug\}/thread} -- Devuelve la lista de todos los \textit{threads} dentro de un \textit{board}, ordenados desde el mas reciente al mas antiguo.
+        \item (GET) \texttt{/\{slug\}/thread} -- Devuelve la lista de todos los \textit{threads} dentro de un \textit{board}, ordenados desde el más reciente al más antiguo.
         \begin{itemize}
             \item Parámetros
             \begin{itemize}
@@ -231,7 +232,7 @@
         \begin{itemize}
             \item Respuestas
             \begin{itemize}
-                \item \texttt{200} -- \texttt{application/json} -- Un array con los \textit{posts} ordenados de mas antíguo a mas reciente.
+                \item \texttt{200} -- \texttt{application/json} -- Un array con los \textit{posts} ordenados de más antíguo a más reciente.
                 \item \texttt{404} -- \texttt{application/json} -- Cuando solicitas un \textit{slug} o un \textit{thread} que no existe.
             \end{itemize}
         \end{itemize}
@@ -327,6 +328,8 @@
     \bigskip\hrule\bigskip
 
     etc\dots
+
+    Mockups de formulario de nuevo thread t/o post???
 
     Ejemplo: llamada a la API desde JS hasta MySQL.
 

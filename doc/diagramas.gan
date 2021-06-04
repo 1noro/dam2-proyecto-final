@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-06-04" view-index="0" gantt-divider-location="699" resource-divider-location="300" version="3.1.3100" locale="es_ES">
+    <description/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="383" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="122" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="190" order="2"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="1 Setup del entorno de desarrollo" color="#8cb6ce" meeting="false" start="2021-06-04" duration="2" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="2" type="2" difference="0" hardness="Strong"/>
+            <depend id="3" type="2" difference="0" hardness="Strong"/>
+            <depend id="4" type="2" difference="0" hardness="Strong"/>
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+            <depend id="6" type="2" difference="0" hardness="Strong"/>
+            <depend id="7" type="2" difference="0" hardness="Strong"/>
+            <depend id="8" type="2" difference="0" hardness="Strong"/>
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+            <depend id="10" type="2" difference="0" hardness="Strong"/>
+            <depend id="11" type="2" difference="0" hardness="Strong"/>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <depend id="99" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="2" name="2 Diseño demockups para las pantallas de la web." color="#8cb6ce" meeting="false" start="2021-06-08" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="3" name="3 Definición de los endpoints de la API" color="#8cb6ce" meeting="false" start="2021-06-08" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="4" name="4 Implementación de la base de datos" color="#8cb6ce" meeting="false" start="2021-06-08" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="5" name="5 Desarrollo de la conexión de la API con la base de datos." color="#8cb6ce" meeting="false" start="2021-06-15" duration="3" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="6" name="6 Implementación de los endpoints de la API" color="#8cb6ce" meeting="false" start="2021-06-08" duration="4" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="8" type="2" difference="0" hardness="Strong"/>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="7" name="7 Desarrollo de la estructura y estilos básicos de la web" color="#8cb6ce" meeting="false" start="2021-06-08" duration="2" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="8" type="2" difference="0" hardness="Strong"/>
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="8" name="8 Desarrollo de la conexión de la web con la API" color="#8cb6ce" meeting="false" start="2021-06-14" duration="3" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="9" name="9 Finalización de los estilos en la web" color="#8cb6ce" meeting="false" start="2021-06-17" duration="3" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="10" name="10 Internacionalización de los textos de la web" color="#8cb6ce" meeting="false" start="2021-06-08" duration="2" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="11" name="11 Setup del entorno del servidor" color="#8cb6ce" meeting="false" start="2021-06-08" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="12" name="12 Despliegue y publicación de la aplicación en el entorno del servidor" color="#8cb6ce" meeting="false" start="2021-07-06" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true"/>
+        <task id="99" name="13 Redacción y documentación del proyecto" color="#8cb6ce" meeting="false" start="2021-06-08" duration="20" complete="0" thirdDate="2021-06-02" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
