@@ -52,6 +52,8 @@ def get_boards():
     board_list.append(BoardDTO(col[0], col[1], None))
   encoded_JSON = json.dumps(jsonpickle.encode(board_list, unpicklable=False))
   decoded_JSON = json.loads(encoded_JSON)
+  mycursor.close()
+  mydb.close()
   return app.response_class(
     response = decoded_JSON,
     status = 200,
@@ -72,9 +74,37 @@ def get_threads(slug):
   board = BoardDTO(slug, board_name, thread_list)
   encoded_JSON = json.dumps(board.to_JSON())
   decoded_JSON = json.loads(encoded_JSON)
+  mycursor.close()
+  mydb.close()
   return app.response_class(
     response = decoded_JSON,
     status = 200,
+    mimetype = 'application/json'
+  )
+
+@app.route('/<slug>/thread/<thread_id>', methods=['POST'])
+def post_reply(slug, thread_id):
+  formData = request.get_json()
+  mydb = get_mydb()
+  mycursor = mydb.cursor()
+  # sql = "CALL insert_post('{}', '{}', '{}', {});".format(
+  #   formData['author'],
+  #   formData['comment'],
+  #   formData['imageurl'],
+  #   thread_id
+  # )
+  args = (
+    formData['author'],
+    formData['comment'],
+    formData['imageurl'],
+    thread_id
+  )
+  mycursor.callproc('insert_post', args)
+  mycursor.close()
+  mydb.close()
+  return app.response_class(
+    response = '{"info": "posted"}',
+    status = 201,
     mimetype = 'application/json'
   )
 

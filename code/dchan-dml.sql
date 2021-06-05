@@ -34,5 +34,12 @@ INSERT INTO THREAD(id, subject, comment, fileurl, board)
         'g'
     );
 
+CALL insert_post('Anonymous', 'seems bad for dust build up', 'https://dcdn.org/g/1622861743004.png', 81931054);
+CALL insert_post('Anonymous', 'is that cover at least used as a heatsink?', 'https://dcdn.org/g/1622865285989.png', 81931054);
+   
 SELECT * FROM BOARD;
 SELECT * FROM THREAD;
+SELECT * FROM POST;
+
+
+

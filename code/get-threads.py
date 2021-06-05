@@ -12,6 +12,8 @@ def get_threads(slug):
   board = Board(slug, board_name, thread_list)
   encoded_JSON = json.dumps(board.to_JSON())
   decoded_JSON = json.loads(encoded_JSON)
+  mycursor.close()
+  mydb.close()
   return app.response_class(
     response = decoded_JSON,
     status = 200,
