@@ -25,6 +25,14 @@ INSERT INTO THREAD(id, subject, comment, fileurl, board)
         'https://dcdn.org/g/1622853294379s.jpg',
         'g'
     );
+INSERT INTO THREAD(id, subject, comment, fileurl, board)
+    VALUES(
+        81931054,
+        'What is the most efficient way to heat water?',
+        'Microfusion reactors?',
+        'https://dcdn.org/g/1622859370330.jpg',
+        'g'
+    );
 
 SELECT * FROM BOARD;
 SELECT * FROM THREAD;

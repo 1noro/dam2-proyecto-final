@@ -412,9 +412,9 @@
 
     En este apartado se intenta detallar cómo funcionarán todas las partes en conjunto, explicando a bajo nivel algunas acciones que se pueden realizar por parte del usuario. Describiendo los componentes \textit{software} implicados, que partes están conectadas y cómo se realizan las comunicaciones entre ellos.
 
-    \subsection{Visualización de un \textit{board}}
+    \subsection{Visualización del contenido de un \textit{board}}
 
-    Una de las tareas mas simples, pero fundamentales, del proyecto, que ofrece al usuario una funcionalidad básica para navegar por la aplicación. Para este ejemplo vamos a suponer que somos un usuario que se encuentra en la portada de la web (\textit{home screen}), donde visualiza la lista de \textit{boards} que están disponibles, como se muestra en la figura \ref{dchan:boardlist}, y acceder al \textit{board} \textit{Tecnology}, cuyo \textit{slug} es \texttt{/g/}.
+    Una de las tareas mas simples, pero fundamentales, del proyecto, que ofrece al usuario una funcionalidad básica para navegar por la aplicación. Para este ejemplo vamos a suponer que somos un usuario que se encuentra en la portada de la web (\textit{home screen}), donde visualiza la lista de \textit{boards} que están disponibles, como se muestra en la figura \ref{dchan:boardlist}, y quiere acceder al \textit{board} \textit{Tecnology}, cuyo \textit{slug} es \texttt{/g/}.
 
     \begin{figure}[h]
         \centering
@@ -423,13 +423,19 @@
         \includegraphics[width=0.9\textwidth]{media/4channel-board-list.png}
     \end{figure}
 
-    Una vez el usuario haga clic en el enlace el proceso empieza con una llamada de tipo \textit{GET} al \textit{API} por parte del cliente web.
+    Una vez el usuario haga clic en el enlace el proceso empieza con una llamada de tipo \textit{GET} al \textit{API} desde el método \texttt{getThreads()} en cliente web.
 
-    \begin{center}
-        \texttt{https://dchan.org/g}
-    \end{center}
+    \lstinputlisting[language=Java, style=javastyle, caption=Implementación de l método \texttt{getThreads()} en el cliente web, label=get:threads:js]{code/getThreads.js}
 
     Esta llamada es interceptada por el \textit{API} y la redirige al siguiente endpoint.
+
+    \lstinputlisting[language=Python, style=javastyle, caption=Implementación del \textit{endpoint} (GET) \texttt{/g} en la \textit{API}, label=get:threads:python]{code/get-threads.py}
+
+    El método \texttt{get\_threads()} se activa en el código del \textit{API} con una llamada como (GET) \texttt{/g}. Este realiza la consulta a la base de datos para obtener la lista de \textit{threads} que hay dentro del \textit{board} \texttt{/g/} y, una vez procesado y serializado el resultado, retorna la siguiente respuesta.
+
+    \lstinputlisting[language=Java, style=javastyle, caption=Respuesta en \textit{JSON} de llamar a (GET) \texttt{/g}, label=get:threads:response]{code/get-threads-response.json}
+
+    Ahora que ya tenemos la respuesta se ejecutará la función de \textit{callback} en el método \texttt{getThreads()} del ejemplo \ref{get:threads:js}, haciendo que se visualize en el cliente web la información solicitada, de forma similar a cómo se muestra en la figura \ref{4chan:board}.
 
     \subsection{Creación de un nuevo \textit{post} en un \textit{thread}}
 
@@ -458,8 +464,6 @@
         \label{dcahn:newthread}
         \includegraphics[width=0.7\textwidth]{media/4chan-new-thread.png}
     \end{figure}
-
-    \lstinputlisting[language=Java, style=javastyle, caption=Obtengo la lista de \textit{threads} que hay en un \textit{board}, label=getBoardThreads]{code/getBoardThreads.js}
 
     \newpage
 
