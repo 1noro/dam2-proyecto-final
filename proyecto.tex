@@ -143,17 +143,17 @@
 
     % \bigskip\hrule\bigskip
 
-    Lista de tareas a realizar y cuanto tiempo conlleva cada una\footnote{Nótese que las tareas de diseño de la base de datos y definición de los \textit{endpoints} de la \textit{API} no se tienen en cuenta en la planificación temporal, porque ya están realizadas en este documento.}.
+    Lista de tareas a realizar y cuanto tiempo conlleva cada una\footnote{Nótese que las tareas de diseño de la base de datos y definición de los \textit{endpoints} de el \textit{API} no se tienen en cuenta en la planificación temporal, porque ya están realizadas en este documento.}.
 
     \begin{enumerate}
         \renewcommand{\theenumi}{\Alph{enumi}} % abc enumeration
         \item (2d\footnote{Unidades de tiempo en días.}) \textit{Setup} del entorno de desarrollo (\textit{hardware} y \textit{software}).
         \item (5d) Diseño de \textit{mockups} para las pantallas de la web.
         \item (4d) Desarrollo y testeo de la base de datos.
-        \item (7d) Desarrollo y testeo de los \textit{endpoints} de la \textit{API}.
-        \item (3d) Desarrollo y testeo de la conexión de la \textit{API} con la base de datos.
+        \item (7d) Desarrollo y testeo de los \textit{endpoints} del \textit{API}.
+        \item (3d) Desarrollo y testeo de la conexión del \textit{API} con la base de datos.
         \item (3d) Desarrollo y testeo de la estructura y funciones básicas de la web.
-        \item (4d) Desarrollo y testeo de la conexión de la web con la \textit{API}.
+        \item (4d) Desarrollo y testeo de la conexión de la web con el \textit{API}.
         \item (3d) Implementación de los estilos en la web.
         \item (2d) Internacionalización de los textos de la web.
         \item (5d) Setup del entorno del servidor (\textit{hardware} y \textit{software}).
@@ -240,15 +240,66 @@
 
     Las comunicaciones entre las diferentes partes del proyecto se realizarán ``serializando'' y ``des-serializando'' las clases de \textit{Python} (en el \textit{API}) y los ``objetos'' de \textit{JavaScript} (en la web) a formato \textit{JSON} para facilitar y estandarizar el transporte entre dichas partes. En cuanto a la base de datos la información se almacenará en tablas, siguiendo el modelo relacional de \textcite{codd:relationalmodel}.
 
-    % \subsection{Página web}
+    \subsection{Base de datos}
 
-    % Texto introductorio, alguna clase de JS o alguna estructura de código que se comunique con la API\dots
+    El diseño de la base de datos, siempre enfocado hacia una mayor eficiencia y rapidez en la lectura y escritura de los datos, está dividida en tres tablas: \textit{BOARD}, \textit{THREAD} y \textit{POST}. Este diseño intenta compartimentar al máximo las diferentes partes de la página con el mínimo acoplamiento entre la s tablas para evitar hacer \textit{joins} innecesarios, que supondrían una mayor carga para el servidor.
 
-    % No se si merece la pena mencionarlo aquí, puede que con el apdo 6 llegue.
+    \begin{figure}[ht]
+        \centering
+        \caption{Diagrama Entidad-Relación de la base de datos de \projectname}\bigskip
+        \label{er:diagram}
+        \begin{tikzpicture}[auto, node distance=1.5cm]
+            \node[entity] (board) {BOARD};
+            \node[relationship, label=below:1:\(n\)] (has1) [below = of board] {has};
+            \node[entity] (thread) [right = of has1] {THREAD};
+            \path (has1) edge (board) edge (thread);
+            \node[relationship, label=below:1:\(n\)] (has2) [right = of thread] {has};
+            \node[entity] (post) [above = of has2] {POST};
+            \path (has2) edge (thread) edge (post);
+        \end{tikzpicture}
+    \end{figure}
+
+    En el diagrama \emph{ER} de la figura \ref{er:diagram} no se han dibujado los atributos de las entidades con el fin de profundizar en ellos a continuación con el mayor detalle posible.
+
+    \paragraph{BOARD} Cada uno de los tablones que dividen la página en diferentes temas.
+
+    \begin{itemize}
+        \item \textbf{slug} VARCHAR(4) PRIMARY KEY
+        \item \textbf{name} VARCHAR(256) NOT NULL
+    \end{itemize}
+
+    \paragraph{THREAD} Cada uno de los debates, o \emph{hilos} de discusión, que se inician dentro de un tablón.
+
+    \begin{itemize}
+        \item \textbf{id} BIGINT PRIMARY KEY
+        \item \textbf{subject} VARCHAR(256) DEFAULT `' NOT NULL
+        \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{comment} VARCHAR(512) NOT NULL
+        \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
+        \item \textbf{published} DATETIME DEFAULT CURRENT\_TIMESTAMP NOT NULL
+        \item \textbf{sticky} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{closed} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{board} VARCHAR(4) FOREIGN KEY REF. BOARD(slug) NOT\\NULL
+    \end{itemize}
+
+    \paragraph{POST} Cada comentario de un usuario dentro de un debate (\textit{thread}), formado por un texto y una foto o pequeño vídeo opcional.
+
+    \begin{itemize}
+        \item \textbf{id} BIGINT PRIMARY KEY
+        \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{comment} VARCHAR(512) DEFAULT `Anonymous' NOT NULL
+        \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
+        \item \textbf{published} DATETIME DEFAULT CURRENT\_TIMESTAMP NOT NULL
+        \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
+        \item \textbf{thread} BIGINT FOREIGN KEY REF. THREAD(id)
+    \end{itemize}
+
+    \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
 
     \subsection{\textit{API}}
 
-    Definición de los \textit{endpoints} de la \textit{API} basada en el estándar \textit{Open API} versión 3.0.3 \cite{swagger:specification}.
+    Definición de los \textit{endpoints} del \textit{API} basada en el estándar \textit{Open API} versión 3.0.3 \cite{swagger:specification}.
 
     \begin{itemize}
         \item (GET) \texttt{/board} -- Devuelve la lista de todos los \textit{boards}.
@@ -331,66 +382,19 @@
         \end{itemize}
     \end{itemize}
 
-    \subsection{Base de datos}
+    Además de los \textit{endpoints}, en el \textit{API}, los datos obtenidos desde la base de datos se traducen en objetos \textit{DTO} (\textit{Data Transfer Object} \cite{wiki:dto}) para facilitar el manejo y la serilaización de la información que se va a devolver.
 
-    El diseño de la base de datos, siempre enfocado hacia una mayor eficiencia y rapidez en la lectura y escritura de los datos, está dividida en tres tablas: \textit{BOARD}, \textit{THREAD} y \textit{POST}. Este diseño intenta compartimentar al máximo las diferentes partes de la página con el mínimo acoplamiento entre la s tablas para evitar hacer \textit{joins} innecesarios, que supondrían una mayor carga para el servidor.
+    \lstinputlisting[language=Python, style=javastyle, caption=Implementación del \textit{DTO} \texttt{ThreadDTO} en el \textit{API}, label=dto:thread]{code/ThreadDTO.py}
 
-    \begin{figure}[ht]
-        \centering
-        \caption{Diagrama Entidad-Relación de la base de datos de \projectname}\bigskip
-        \label{er:diagram}
-        \begin{tikzpicture}[auto, node distance=1.5cm]
-            \node[entity] (board) {BOARD};
-            \node[relationship, label=below:1:\(n\)] (has1) [below = of board] {has};
-            \node[entity] (thread) [right = of has1] {THREAD};
-            \path (has1) edge (board) edge (thread);
-            \node[relationship, label=below:1:\(n\)] (has2) [right = of thread] {has};
-            \node[entity] (post) [above = of has2] {POST};
-            \path (has2) edge (thread) edge (post);
-        \end{tikzpicture}
-    \end{figure}
+    % \subsection{Página web}
 
-    En el diagrama \emph{ER} de la figura \ref{er:diagram} no se han dibujado los atributos de las entidades con el fin de profundizar en ellos a continuación con el mayor detalle posible.
+    % Texto introductorio, alguna clase de JS o alguna estructura de código que se comunique con la API\dots
 
-    \paragraph{BOARD} Cada uno de los tablones que dividen la página en diferentes temas.
-
-    \begin{itemize}
-        \item \textbf{slug} VARCHAR(4) PRIMARY KEY
-        \item \textbf{name} VARCHAR(256) NOT NULL
-    \end{itemize}
-
-    \paragraph{THREAD} Cada uno de los debates, o \emph{hilos} de discusión, que se inician dentro de un tablón.
-
-    \begin{itemize}
-        \item \textbf{id} BIGINT PRIMARY KEY
-        \item \textbf{subject} VARCHAR(256) DEFAULT `' NOT NULL
-        \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
-        \item \textbf{comment} VARCHAR(512) NOT NULL
-        \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
-        \item \textbf{published} DATETIME DEFAULT CURRENT\_TIMESTAMP NOT NULL
-        \item \textbf{sticky} BOOLEAN DEFAULT FALSE NOT NULL
-        \item \textbf{closed} BOOLEAN DEFAULT FALSE NOT NULL
-        \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
-        \item \textbf{board} VARCHAR(4) FOREIGN KEY REF. BOARD(slug) NOT\\NULL
-    \end{itemize}
-
-    \paragraph{POST} Cada comentario de un usuario dentro de un debate (\textit{thread}), formado por un texto y una foto o pequeño vídeo opcional.
-
-    \begin{itemize}
-        \item \textbf{id} BIGINT PRIMARY KEY
-        \item \textbf{author} VARCHAR(50) DEFAULT `Anonymous' NOT NULL
-        \item \textbf{comment} VARCHAR(512) DEFAULT `Anonymous' NOT NULL
-        \item \textbf{fileurl} VARCHAR(512) DEFAULT NULL
-        \item \textbf{published} DATETIME DEFAULT CURRENT\_TIMESTAMP NOT NULL
-        \item \textbf{deleted} BOOLEAN DEFAULT FALSE NOT NULL
-        \item \textbf{thread} BIGINT FOREIGN KEY REF. THREAD(id)
-    \end{itemize}
-
-    \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
+    % No se si merece la pena mencionarlo aquí, puede que con el apdo 6 llegue.
 
     % \subsection{Resultados}
 
-    % Resultados de algunos de los trozos de código que muestro, por ejemplo, algún \textit{JSON} que devuelva la \textit{API}.
+    % Resultados de algunos de los trozos de código que muestro, por ejemplo, algún \textit{JSON} que devuelva el \textit{API}.
 
     % ¿Capturas de pantalla con ejemplos del funcionamiento de la web, formulario para crear thread, post; portada, lista de boards; el contenido de un thread de ejemplo? ¿Puede que esto vaya en el siguiente apartado? (Preguntar a MJ)
 
@@ -429,7 +433,7 @@
 
     Esta llamada es interceptada por el \textit{API} y la redirige al siguiente endpoint.
 
-    \lstinputlisting[language=Python, style=javastyle, caption=Implementación del \textit{endpoint} (GET) \texttt{/g} en la \textit{API}, label=get:threads:python]{code/get-threads.py}
+    \lstinputlisting[language=Python, style=javastyle, caption=Implementación del \textit{endpoint} (GET) \texttt{/g} en el \textit{API}, label=get:threads:python]{code/get-threads.py}
 
     El método \texttt{get\_threads()} se activa en el código del \textit{API} con una llamada como (GET) \texttt{/g}. Este realiza la consulta a la base de datos para obtener la lista de \textit{threads} que hay dentro del \textit{board} \texttt{/g/} y, una vez procesado y serializado el resultado, retorna la siguiente respuesta.
 
