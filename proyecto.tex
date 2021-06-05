@@ -165,36 +165,40 @@
             \node[trinode] (n1) {1\nodepart{lower} 0\ \ 0};
             % level 1
             \node[trinode, below right=2.0of n1] (n2) {2\nodepart{lower} 2\ \ ?};
-            \draw[->] (n1)--(n2) node[midway, above right]{A(2)};
+            \draw[->, very thick] (n1)--(n2) node[midway, above right]{A(2)};
             \node[trinode, below=of n1] (n3) {3\nodepart{lower} ?\ \ ?};
             \draw[->] (n1)--(n3) node[midway, right]{B(?)};
-            \node[trinode, below left=2.0of n1] (n4) {4\nodepart{lower} ?\ \ ?};
-            \draw[->] (n1)--(n4) node[midway, above left]{J(?)};
             % level 2
             \node[trinode, below right=2.0of n2] (n5) {5\nodepart{lower} ?\ \ ?};
             \draw[->] (n2)--(n5) node[midway, above right]{C(?)};
             \node[trinode, below=of n2] (n6) {6\nodepart{lower} ?\ \ ?};
-            \draw[->] (n2)--(n6) node[midway, right]{D(?)};
+            \draw[->, very thick] (n2)--(n6) node[midway, right]{D(?)};
             \node[trinode, below=of n3] (n7) {7\nodepart{lower} ?\ \ ?};
             \draw[->] (n3)--(n7) node[midway, right]{F(?)};
+            \node[trinode, below left=5.5of n1] (n4) {4\nodepart{lower} ?\ \ ?};
+            \draw[->] (n1)--(n4) node[midway, above left]{J(?)};
+            \draw[->, dashed] (n5)--(n6) node[midway, above]{\O};
+            \draw[->, dashed] (n7)--(n6) node[midway, above]{\O};
             % level 3
             \node[trinode, below right=2.0of n6] (n8) {8\nodepart{lower} ?\ \ ?};
             \draw[->] (n6)--(n8) node[midway, above right]{E(?)};
             \node[trinode, below left=2.0of n6] (n9) {9\nodepart{lower} ?\ \ ?};
-            \draw[->] (n6)--(n9) node[midway, below right]{G(?)};
+            \draw[->, very thick] (n6)--(n9) node[midway, below right]{G(?)};
+            \draw[->, dashed] (n8)--(n9) node[midway, above]{\O};
             % level 4
             \node[trinode, below right=2.0of n9] (n10) {10\nodepart{lower} ?\ \ ?};
             \draw[->] (n9)--(n10) node[midway, above right]{L(?)};
             \node[trinode, below=of n9] (n11) {11\nodepart{lower} ?\ \ ?};
-            \draw[->] (n9)--(n11) node[midway, left]{H(?)};
+            \draw[->, very thick] (n9)--(n11) node[midway, left]{H(?)};
             % level 5
             \node[trinode, below=of n11] (n12) {12\nodepart{lower} ?\ \ ?};
-            \draw[->] (n11)--(n12) node[midway, left]{H(?)};
+            \draw[->, very thick] (n11)--(n12) node[midway, right]{I(?)};
             % level 6
             \node[trinode, below=of n12] (n13) {13\nodepart{lower} ?\ \ ?};
-            \draw[->] (n12)--(n13) node[midway, left]{K(?)};
+            \draw[->, very thick] (n12)--(n13) node[midway, left]{K(?)};
             % inter-level
-            \draw[->, dashed] (n4)--(n12) node[midway, left]{0};
+            \draw[->, dashed] (n4)--(n12) node[midway, below left]{\O};
+            \draw[->, dashed] (n10)--(n13) node[midway, below right]{\O};
         \end{tikzpicture}
     \end{figure}
 
