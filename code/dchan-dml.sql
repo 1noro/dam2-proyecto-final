@@ -10,12 +10,21 @@ INSERT INTO BOARD(slug, name) VALUES('x', 'Paranormal');
 
 INSERT INTO THREAD(id, subject, comment, fileurl, board)
     VALUES(
-    	1,
+        1,
         'Alien Disclosure',
         'How do the vessels move without any visible propulsion system?',
         'https://dcdn.org/x/1622583515994s.jpg',
         'x'
     );
-    
+
+INSERT INTO THREAD(id, subject, comment, fileurl, board)
+    VALUES(
+        81930017,
+        '/pcbg/ - PC Building General',
+        '>UPGRADE & BUILD ADVICE\nPost build "list" or current specs including MONITOR\nConvient lister: https://pcpartpicker.com/\nProvide specific use cases (e.g. gaming, editing, rendering)\nState budget and region',
+        'https://dcdn.org/g/1622853294379s.jpg',
+        'g'
+    );
+
 SELECT * FROM BOARD;
 SELECT * FROM THREAD;

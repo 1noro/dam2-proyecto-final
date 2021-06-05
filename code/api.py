@@ -27,7 +27,7 @@ class Thread:
         self.author = author;
         self.comment = comment;
         self.fileurl = fileurl;
-        self.published = published;
+        self.published = published.strftime('%c');
         self.sticky = sticky;
         self.closed = closed;
     def to_JSON(self):
@@ -44,9 +44,6 @@ class Board:
 @app.route('/board', methods=["GET"])
 def get_boards():
     board_list = []
-    # board_list.append(Board('a', 'Anime & Manga', None))
-    # board_list.append(Board('b', 'Random', None))
-    # board_list.append(Board('g', 'Technology', None))
     mydb = get_mydb()
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM BOARD")
@@ -65,20 +62,26 @@ def get_boards():
 @app.route('/<slug>', methods=["GET"])
 def get_threads(slug):
     thread_list = []
-    thread_list.append(Thread(
-        81930017,
-        '/pcbg/ - PC Building General',
-        'Anonymous',
-        '''>UPGRADE & BUILD ADVICE
-Post build "list" or current specs including MONITOR
-Convient lister: https://pcpartpicker.com/
-Provide specific use cases (e.g. gaming, editing, rendering)
-State budget and region''',
-        'https://i.dcdn.org/g/1622853294379s.jpg',
-        '06/05/21(Sat)02:34:54',
-        False,
-        False
-    ))
+#     thread_list.append(Thread(
+#         81930017,
+#         '/pcbg/ - PC Building General',
+#         'Anonymous',
+#         '''>UPGRADE & BUILD ADVICE
+# Post build "list" or current specs including MONITOR
+# Convient lister: https://pcpartpicker.com/
+# Provide specific use cases (e.g. gaming, editing, rendering)
+# State budget and region''',
+#         'https://dcdn.org/g/1622853294379s.jpg',
+#         '06/05/21(Sat)02:34:54',
+#         False,
+#         False
+#     ))
+    mydb = get_mydb()
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM THREAD WHERE board = '{}'".format(slug))
+    myresult = mycursor.fetchall()
+    for col in myresult:
+        thread_list.append(Thread(*col[:-2]))
     board = Board('g', 'Technology', thread_list)
     encoded_JSON = json.dumps(board.to_JSON())
     decoded_JSON = json.loads(encoded_JSON)
