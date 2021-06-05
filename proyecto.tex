@@ -106,6 +106,13 @@
     {\projectname} será administrado por una organización sin ánimo de lucro (\textit{The {\projectname} Foundation}), creada específicamente con la finalidad de asegurar la libertad, independencia y neutralidad del proyecto, así como mantenerlo ajeno a todo interés económico, político y personal que pueda derivar de una administración centrada en una única o un reducido número de personas. Imitando así modelos como los implementados en \emph{Wikimedia} \cite{wikimedia:about} o \emph{The Internet Archive} \cite{internetarchive:about}. Esta será la encargada tanto de la parte financiera, administrando las donaciones que se puedan recibir por parte de los usuarios, como la parte tecnológica, ofreciendo al proyecto de la infraestructura física y el mantenimiento necesario para asegurar su correcto funcionamiento.
     
     El objetivo final pasa por establecer un lugar de debate e intercambio de opiniones abierto, libre y neutral; donde cada usuario pueda encontrar su rincón y hablar de lo que le apetezca con personas que comparten sus mismos gustos y aficiones. Y al mismo tiempo ofrecer espacios donde posiciones opuestas se enfrenten para que eventualmente se alcance un consenso común y beneficioso para ambas partes.
+
+    \begin{figure}[ht]
+        \centering
+        \caption{Vista de lectura de un \textit{thread} en \textit{4chan}}\bigskip
+        \label{4chan:thread}
+        \includegraphics[width=0.9\textwidth]{media/4chan-thread.png}
+    \end{figure}
     
     Este proyecto va dirigido a usuarios que les importan más las ideas --el debate en sí-- y no las personas que sostienen esas ideas, gente de todas las edades que quiera compartir sus opiniones y experiencias con una gran comunidad de distribuida por todo el mundo. El anonimato hace que la gente se pueda expresar sin tapujos y sin esperar consecuencias en el ámbito personal, instigadas por lo que uno piensa.
 
@@ -295,8 +302,6 @@
         \item \textbf{thread} BIGINT FOREIGN KEY REF. THREAD(id)
     \end{itemize}
 
-    \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
-
     \subsection{\textit{API}}
 
     Definición de los \textit{endpoints} del \textit{API} basada en el estándar \textit{Open API} versión 3.0.3 \cite{swagger:specification}.
@@ -448,7 +453,7 @@
 
     Una vez el usuario haga clic en el enlace el proceso empieza con una llamada de tipo \textit{GET} al \textit{API} desde el método \texttt{getThreads()} en cliente web.
 
-    \lstinputlisting[language=Java, style=javastyle, caption=Implementación de l método \texttt{getThreads()} en el cliente web, label=get:threads:js]{code/getThreads.js}
+    \lstinputlisting[language=Java, style=javastyle, caption=Implementación del método \texttt{getThreads()} en el cliente web, label=get:threads:js]{code/getThreads.js}
 
     Esta llamada es interceptada por el \textit{API} y la redirige al siguiente endpoint.
 
@@ -460,7 +465,7 @@
 
     Ahora que ya tenemos la respuesta en el cliente web, se ejecutará la función de \textit{callback} en el método \texttt{getThreads()} del ejemplo \ref{get:threads:js}, haciendo que se visualize en el cliente web la información solicitada, de forma similar a cómo se muestra en la figura \ref{4chan:board}.
 
-    \newpage % REVISAR SI ES NECESARIO AL FINAL
+    %\newpage % REVISAR SI ES NECESARIO AL FINAL
 
     \subsection{Creación de un nuevo \textit{post} en un \textit{thread} (\textit{reply})}
 
@@ -473,9 +478,19 @@
         \includegraphics[width=0.7\textwidth]{media/4chan-reply-to-thread.png}
     \end{figure}
 
-    Una vez se hayan rellenado todos los campos obligatorios del formulario, al pulsar sobre el botón de \texttt{Post} se ejecutará su método asociado.
+    Una vez se hayan rellenado todos los campos obligatorios del formulario, al pulsar sobre el botón de \texttt{Post} se ejecutará su método asociado para realizar la llamada al \textit{API}.
 
-    \lstinputlisting[language=Java, style=javastyle, caption=Implementación de la llamada a (POST) \texttt{/\{slug\}/thread/\{id\}}, label=post:reply:js]{code/postReply.js}
+    \lstinputlisting[language=Java, style=javastyle, caption=Implementación del método \texttt{postReply()} en el cliente web, label=post:reply:js]{code/postReply.js}
+
+    Una vez recibida la llamada en la \textit{API} se ejecutará el método asociado, para procesar la información recibida y almacenarla correctamente en la base de datos.
+
+    \lstinputlisting[language=Python, style=javastyle, caption=Implementación del \textit{endpoint} (POST) \texttt{/\{slug\}/thread/\{id\}}, label=post:reply:python]{code/post-reply.py}
+
+    El método del \textit{API} \texttt{post\_reply()} hace uso del procedimiento almacenado \texttt{insert\_post}, el cual facilita las cosas a la hora de insertar nuevos valores en la base de datos, pues ofrece automatismos como el incremento del \texttt{id}.
+
+    \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
+
+    Una vez el nuevo \textit{post} queda registrado en la base de datos y asociado a un \textit{thread}, el usuario será informado de la publicación con un mensaje de felicitación. La próxima vez que se visite el \textit{thread} (ejemplo en la figura \ref{4chan:thread}) o se actualize la página, el usuario podrá ver reflejada su aportación a la conversación.
 
     \newpage
 

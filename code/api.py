@@ -87,12 +87,6 @@ def post_reply(slug, thread_id):
   formData = request.get_json()
   mydb = get_mydb()
   mycursor = mydb.cursor()
-  # sql = "CALL insert_post('{}', '{}', '{}', {});".format(
-  #   formData['author'],
-  #   formData['comment'],
-  #   formData['imageurl'],
-  #   thread_id
-  # )
   args = (
     formData['author'],
     formData['comment'],

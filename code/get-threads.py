@@ -3,9 +3,13 @@ def get_threads(slug):
   thread_list = []
   mydb = get_mydb()
   mycursor = mydb.cursor()
-  mycursor.execute("SELECT name FROM BOARD WHERE slug = '{}'".format(slug))
+  mycursor.execute(
+    "SELECT name FROM BOARD WHERE slug = '{}'".format(slug)
+  )
   board_name = mycursor.fetchone()[0]
-  mycursor.execute("SELECT * FROM THREAD WHERE board = '{}'".format(slug))
+  mycursor.execute(
+    "SELECT * FROM THREAD WHERE board = '{}'".format(slug)
+  )
   myresult = mycursor.fetchall()
   for col in myresult:
     thread_list.append(Thread(*col[:-2]))
