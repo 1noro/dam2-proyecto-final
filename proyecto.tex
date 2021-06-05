@@ -263,7 +263,7 @@
     \lstinputlisting[language=Java, style=javastyle, caption=Respuesta \texttt{200} \textit{OK} en \textit{JSON} del endpoint (GET) \texttt{/board}, label=get:board:response]{code/get-board-response.json}
 
     \begin{itemize}
-        \item (GET) \texttt{/\{slug\}/thread} -- Devuelve la lista de todos los \textit{threads} dentro de un \textit{board}, ordenados desde el más reciente al más antiguo.
+        \item (GET) \texttt{/\{slug\}} -- Devuelve la lista de todos los \textit{threads} dentro de un \textit{board}, ordenados desde el más reciente al más antiguo.
         \begin{itemize}
             \item Parámetros
             \begin{itemize}
@@ -279,7 +279,7 @@
                 \item \texttt{404} -- \texttt{application/json} -- Cuando solicitas un \textit{slug} o una página que no existe.
             \end{itemize}
         \end{itemize}
-        \item (POST) \texttt{/\{slug\}/thread} -- Permite publicar un nuevo \textit{thread} dentro de un \textit{board} dado.
+        \item (POST) \texttt{/\{slug\}} -- Permite publicar un nuevo \textit{thread} dentro de un \textit{board} dado.
         \begin{itemize}
             \item \textit{Request body} (\textit{required}) -- \texttt{application/json}
             \begin{itemize}

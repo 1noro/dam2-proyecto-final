@@ -4,12 +4,21 @@ import os
 import json
 import time
 import jsonpickle
+import mysql.connector
 
 from multiprocessing import Process
 from datetime import datetime
 from flask import Flask, request  # python-flask
 
 app = Flask(__name__)
+
+def get_mydb():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="123456789",
+        database="DCHAN"
+    )
 
 class Thread:
     def __init__(self, id, subject, author, comment, fileurl, published, sticky, closed):
@@ -35,9 +44,15 @@ class Board:
 @app.route('/board', methods=["GET"])
 def get_boards():
     board_list = []
-    board_list.append(Board('a', 'Anime & Manga', None))
-    board_list.append(Board('b', 'Random', None))
-    board_list.append(Board('g', 'Technology', None))
+    # board_list.append(Board('a', 'Anime & Manga', None))
+    # board_list.append(Board('b', 'Random', None))
+    # board_list.append(Board('g', 'Technology', None))
+    mydb = get_mydb()
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM BOARD")
+    myresult = mycursor.fetchall()
+    for col in myresult:
+        board_list.append(Board(col[0], col[1], None))
     encoded_JSON = json.dumps(jsonpickle.encode(board_list, unpicklable=False))
     decoded_JSON = json.loads(encoded_JSON)
     return app.response_class(
@@ -45,6 +60,7 @@ def get_boards():
         status = 200,
         mimetype = 'application/json'
     )
+    
 
 @app.route('/<slug>', methods=["GET"])
 def get_threads(slug):
