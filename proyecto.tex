@@ -17,6 +17,8 @@
 \usepackage{tikz}
 % \usetikzlibrary{er, positioning}
 \usetikzlibrary{er, positioning, babel, shapes.multipart}
+% diagrama gantt
+\usepackage{pgfgantt}
 
 % mostrar colores
 \usepackage{xcolor}
@@ -134,7 +136,7 @@
 
     % \bigskip\hrule\bigskip
 
-    Lista de tareas a realizar y cuanto tiempo conlleva cada una:
+    Lista de tareas a realizar y cuanto tiempo conlleva cada una\footnote{Nótese que las tareas de diseño de la base de datos y definición de los \textit{endpoints} de la \textit{API} no se tienen en cuenta en la planificación temporal, porque ya están realizadas en este documento.}.
 
     \begin{enumerate}
         \renewcommand{\theenumi}{\Alph{enumi}} % abc enumeration
@@ -152,11 +154,30 @@
         \item (7d) Redacción de la documentación del proyecto.
     \end{enumerate}
 
-    Nótese que las tareas de diseño de la base de datos y definición de los \textit{endpoints} de la \textit{API} no se tienen en cuenta en la planificación temporal, porque ya están realizadas en este documento.
+    \begin{figure}[ht]
+        \centering
+        \caption{Diagrama de Gantt}
+        \label{diagram:gantt}
+        \begin{ganttchart}[vgrid, x unit=0.50cm, y unit chart=0.3cm, bar height=1.0, bar top shift=-0.0, title height=0.45]{1}{23}
+            \gantttitlelist{1, ..., 23}{1} \\
+            \ganttbar{\footnotesize{A}}{ 1}{ 2} \\
+            \ganttbar{\footnotesize{B}}{ 1}{ 5} \\
+            \ganttbar{\footnotesize{C}}{ 3}{ 6} \\
+            \ganttbar{\footnotesize{D}}{ 3}{ 9} \\
+            \ganttbar{\footnotesize{E}}{10}{12} \\
+            \ganttbar{\footnotesize{F}}{ 6}{ 8} \\
+            \ganttbar{\footnotesize{G}}{10}{13} \\
+            \ganttbar{\footnotesize{H}}{14}{16} \\
+            \ganttbar{\footnotesize{I}}{17}{18} \\
+            \ganttbar{\footnotesize{J}}{ 1}{ 5} \\
+            \ganttbar{\footnotesize{K}}{19}{23} \\
+            \ganttbar{\footnotesize{L}}{14}{20} \\
+        \end{ganttchart}
+    \end{figure}
 
     \begin{figure}[ht]
         \centering
-        \caption{Diagrama PERT}\bigskip
+        \caption{Diagrama PERT}\medskip
         \label{diagram:pert}
         \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}, trinode/.style={circle split, draw, path picture={\draw (path picture bounding box.center)--(path picture bounding box.south);}}]
             % level 0
@@ -200,9 +221,7 @@
         \end{tikzpicture}
     \end{figure}
 
-    Diagrama de Gantt\dots
-
-    \newpage % REVISAR SI ES NECESARIO AL FINAL
+    %\newpage % REVISAR SI ES NECESARIO AL FINAL
 
     \section{Descripción de los datos base y resultados}
 
