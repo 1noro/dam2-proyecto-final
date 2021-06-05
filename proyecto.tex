@@ -141,15 +141,15 @@
         \item (2d\footnote{Unidades de tiempo en días.}) \textit{Setup} del entorno de desarrollo (\textit{hardware} y \textit{software}).
         \item (5d) Diseño de \textit{mockups} para las pantallas de la web.
         \item (4d) Implementación de la base de datos (\textit{DDL}).
-        \item (5d) Implementación de los \textit{endpoints} de la \textit{API}.
+        \item (7d) Implementación de los \textit{endpoints} de la \textit{API}.
         \item (3d) Desarrollo de la conexión de la \textit{API} con la base de datos.
-        \item (2d) Desarrollo de la estructura y estilos básicos de la web.
-        \item (3d) Desarrollo de la conexión de la web con la \textit{API}.
+        \item (3d) Desarrollo de la estructura y estilos básicos de la web.
+        \item (4d) Desarrollo de la conexión de la web con la \textit{API}.
         \item (3d) Finalización de los estilos en la web.
         \item (2d) Internacionalización de los textos de la web.
         \item (5d) Setup del entorno del servidor (\textit{hardware} y \textit{software}).
         \item (5d) Despliegue y publicación de la aplicación en el entorno del servidor.
-        \item (10d) Redacción de la documentación del proyecto.
+        \item (7d) Redacción de la documentación del proyecto.
     \end{enumerate}
 
     Nótese que las tareas de diseño de la base de datos y definición de los \textit{endpoints} de la \textit{API} no se tienen en cuenta en la planificación temporal, porque ya están realizadas en este documento.
@@ -162,40 +162,40 @@
         \label{diagram:pert}
         \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}, trinode/.style={circle split, draw, path picture={\draw (path picture bounding box.center)--(path picture bounding box.south);}}]
             % level 0
-            \node[trinode] (n1) {1\nodepart{lower} 0\ \ 0};
+            \node[trinode] (n1) {1\nodepart{lower} 00\ \ 00};
             % level 1
-            \node[trinode, below right=2.0of n1] (n2) {2\nodepart{lower} 2\ \ ?};
+            \node[trinode, below right=2.0of n1] (n2) {2\nodepart{lower} 02\ \ 02};
             \draw[->, very thick] (n1)--(n2) node[midway, above right]{A(2)};
-            \node[trinode, below=of n1] (n3) {3\nodepart{lower} ?\ \ ?};
-            \draw[->] (n1)--(n3) node[midway, right]{B(?)};
+            \node[trinode, below=of n1] (n3) {3\nodepart{lower} 05\ \ 06};
+            \draw[->] (n1)--(n3) node[midway, right]{B(5)};
             % level 2
-            \node[trinode, below right=2.0of n2] (n5) {5\nodepart{lower} ?\ \ ?};
-            \draw[->] (n2)--(n5) node[midway, above right]{C(?)};
-            \node[trinode, below=of n2] (n6) {6\nodepart{lower} ?\ \ ?};
-            \draw[->, very thick] (n2)--(n6) node[midway, right]{D(?)};
-            \node[trinode, below=of n3] (n7) {7\nodepart{lower} ?\ \ ?};
-            \draw[->] (n3)--(n7) node[midway, right]{F(?)};
-            \node[trinode, below left=5.5of n1] (n4) {4\nodepart{lower} ?\ \ ?};
-            \draw[->] (n1)--(n4) node[midway, above left]{J(?)};
+            \node[trinode, below right=2.0of n2] (n5) {5\nodepart{lower} 06\ \ 09};
+            \draw[->] (n2)--(n5) node[midway, above right]{C(4)};
+            \node[trinode, below=of n2] (n6) {6\nodepart{lower} 09\ \ 09};
+            \draw[->, very thick] (n2)--(n6) node[midway, right]{D(7)};
+            \node[trinode, below=of n3] (n7) {7\nodepart{lower} 08\ \ 09};
+            \draw[->] (n3)--(n7) node[midway, right]{F(3)};
+            \node[trinode, below left=5.5of n1] (n4) {4\nodepart{lower} 05\ \ 18};
+            \draw[->] (n1)--(n4) node[midway, above left]{J(5)};
             \draw[->, dashed] (n5)--(n6) node[midway, above]{\O};
             \draw[->, dashed] (n7)--(n6) node[midway, above]{\O};
             % level 3
-            \node[trinode, below right=2.0of n6] (n8) {8\nodepart{lower} ?\ \ ?};
-            \draw[->] (n6)--(n8) node[midway, above right]{E(?)};
-            \node[trinode, below left=2.0of n6] (n9) {9\nodepart{lower} ?\ \ ?};
-            \draw[->, very thick] (n6)--(n9) node[midway, below right]{G(?)};
+            \node[trinode, below right=2.0of n6] (n8) {8\nodepart{lower} 12\ \ 13};
+            \draw[->] (n6)--(n8) node[midway, above right]{E(3)};
+            \node[trinode, below left=2.0of n6] (n9) {9\nodepart{lower} 13\ \ 13};
+            \draw[->, very thick] (n6)--(n9) node[midway, below right]{G(4)};
             \draw[->, dashed] (n8)--(n9) node[midway, above]{\O};
             % level 4
-            \node[trinode, below right=2.0of n9] (n10) {10\nodepart{lower} ?\ \ ?};
-            \draw[->] (n9)--(n10) node[midway, above right]{L(?)};
-            \node[trinode, below=of n9] (n11) {11\nodepart{lower} ?\ \ ?};
-            \draw[->, very thick] (n9)--(n11) node[midway, left]{H(?)};
+            \node[trinode, below right=2.0of n9] (n10) {10\nodepart{lower} 20\ \ 23};
+            \draw[->] (n9)--(n10) node[midway, above right]{L(7)};
+            \node[trinode, below=of n9] (n11) {11\nodepart{lower} 16\ \ 16};
+            \draw[->, very thick] (n9)--(n11) node[midway, left]{H(3)};
             % level 5
-            \node[trinode, below=of n11] (n12) {12\nodepart{lower} ?\ \ ?};
-            \draw[->, very thick] (n11)--(n12) node[midway, right]{I(?)};
+            \node[trinode, below=of n11] (n12) {12\nodepart{lower} 18\ \ 18};
+            \draw[->, very thick] (n11)--(n12) node[midway, right]{I(2)};
             % level 6
-            \node[trinode, below=of n12] (n13) {13\nodepart{lower} ?\ \ ?};
-            \draw[->, very thick] (n12)--(n13) node[midway, left]{K(?)};
+            \node[trinode, below=of n12] (n13) {13\nodepart{lower} 23\ \ 23};
+            \draw[->, very thick] (n12)--(n13) node[midway, left]{K(5)};
             % inter-level
             \draw[->, dashed] (n4)--(n12) node[midway, below left]{\O};
             \draw[->, dashed] (n10)--(n13) node[midway, below right]{\O};
