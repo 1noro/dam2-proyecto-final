@@ -55,10 +55,11 @@
     % - índice 
     \tableofcontents
     \vspace{\fill}
+    % - licencia (CC-BY)
     \begin{center}
         \includegraphics[width=0.15\textwidth]{media/cc-by-large.png}
 
-        Licencia de \textit{Creative Commons} Reconocimiento 4.0 Internacional.
+        \small{Obra bajo licencia de \textit{Creative Commons} Reconocimiento 4.0 Internacional.}
     \end{center}
     \newpage
 
@@ -183,7 +184,7 @@
 
     \begin{figure}[ht]
         \centering
-        \caption{Diagrama PERT}\medskip
+        \caption{Diagrama PERT}\bigskip
         \label{diagram:pert}
         \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}, trinode/.style={circle split, draw, path picture={\draw (path picture bounding box.center)--(path picture bounding box.south);}}]
             % level 0
@@ -231,19 +232,19 @@
 
     \section{Descripción de los datos base y resultados}
 
-    Se describirán el tipo de campo (en caso de java serían: String, char, int, double, long\dots), que se utilizará para recoger los diferentes datos.
+    % Se describirán el tipo de campo (en caso de java serían: String, char, int, double, long\dots), que se utilizará para recoger los diferentes datos.
 
-    Posibles restricciones y/o estructuras utilizadas (clases). Lo mismo para los datos resultantes de los procesos.
+    % Posibles restricciones y/o estructuras utilizadas (clases). Lo mismo para los datos resultantes de los procesos.
 
-    \bigskip\hrule\bigskip
+    % \bigskip\hrule\bigskip
 
-    Texto introductorio\dots
+    Las comunicaciones entre las diferentes partes del proyecto se realizarán ``serializando'' y ``des-serializando'' las clases de \textit{Python} (en el \textit{API}) y los ``objetos'' de \textit{JavaScript} (en la web) a formato \textit{JSON} para facilitar y estandarizar el transporte entre dichas partes. En cuanto a la base de datos la información se almacenará en tablas, siguiendo el modelo relacional de \textcite{codd:relationalmodel}.
 
-    \subsection{Página web}
+    % \subsection{Página web}
 
-    Texto introductorio, alguna clase de JS o alguna estructura a de código que se comunique con la API\dots
+    % Texto introductorio, alguna clase de JS o alguna estructura de código que se comunique con la API\dots
 
-    No se si merece la pena mencionarlo aquí, puede que con el apdo 6 llegue.
+    % No se si merece la pena mencionarlo aquí, puede que con el apdo 6 llegue.
 
     \subsection{\textit{API}}
 
@@ -407,8 +408,6 @@
 
     Ejemplo: llamada a la API desde JS hasta MySQL.
 
-    \lstinputlisting[language=Java, style=javastyle, caption=Obtengo la lista de \textit{threads} que hay en un \textit{board}, label=getBoardThreads]{code/getBoardThreads.js}
-
     \begin{figure}[ht]
         \centering
         \caption{Relaciones entre las partes del proyecto}\bigskip
@@ -425,6 +424,15 @@
         \end{tikzpicture}
         \shorthandon{>}\shorthandon{<}
     \end{figure}
+
+    \begin{figure}[ht]
+        \centering
+        \caption{Ejemplo de formulario para crear un nuevo \textit{thread}}\bigskip
+        \label{dcahn:newthread}
+        \includegraphics[width=0.7\textwidth]{media/4chan-new-thread.png}
+    \end{figure}
+
+    \lstinputlisting[language=Java, style=javastyle, caption=Obtengo la lista de \textit{threads} que hay en un \textit{board}, label=getBoardThreads]{code/getBoardThreads.js}
 
     \newpage
 
