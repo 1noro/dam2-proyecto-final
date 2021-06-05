@@ -186,7 +186,7 @@
         \centering
         \caption{Diagrama PERT}\bigskip
         \label{diagram:pert}
-        \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}, trinode/.style={circle split, draw, path picture={\draw (path picture bounding box.center)--(path picture bounding box.south);}}]
+        \begin{tikzpicture}[scale=0.70, every node/.style={transform shape}, trinode/.style={circle split, draw, path picture={\draw (path picture bounding box.center)--(path picture bounding box.south);}}]
             % level 0
             \node[trinode] (n1) {1\nodepart{lower} 00\ \ 00};
             % level 1
@@ -400,19 +400,38 @@
 
     \section{Relación entre dispositivos y programa o rutinas}
 
-    Se identificarán los componentes que comunican el paquete o aplicación \textit{software} desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc.
+    % Se identificarán los componentes que comunican el paquete o aplicación \textit{software} desarrollado con el resto de actores relevantes fuera de la máquina. Es decir, interfaces persona-máquina para entrada y/o salida de datos, interfaces de red u otros medios para comunicación con máquinas remotas, periféricos específicos o componentes concretos de plataformas móviles, etc.
 
-    Se identificarán los componentes \textit{software} (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
+    % Se identificarán los componentes \textit{software} (clases, procedimientos) representativos y se vincularán con los anteriormente mencionados a través de texto y/o diagrama(s) que ayuden a comprender el funcionamiento general de la aplicación.
 
-    \bigskip\hrule\bigskip
+    % \bigskip\hrule\bigskip
 
-    etc\dots
+    % etc\dots
 
-    Mockups de formulario de nuevo thread t/o post???
+    % Mockups de formulario de nuevo thread t/o post???
 
-    Ejemplo: llamada a la API desde JS hasta MySQL.
+    % Ejemplo: llamada a la API desde JS hasta MySQL.
 
-    \bigskip\hrule\bigskip
+    % \bigskip\hrule\bigskip
+
+    \begin{figure}[ht]
+        \centering
+        \caption{Relaciones entre las partes del proyecto entre sí y con el usuario}\bigskip
+        \label{project:schema}
+        % para poder usar > y < en el draw
+        % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+        \shorthandoff{>}\shorthandoff{<}
+        \begin{tikzpicture}[node distance=1.5cm]
+            \node (user)  {User};
+            \node (web) [right=of user] {Webpage};
+            \node (api) [right=of web] {API};
+            \node (db) [right=of api] {Database};
+            \draw[<->, thick] (web) -- (api);
+            \draw[<->, thick] (api) -- (db);
+            \draw[<->, thick] (user) -- (web);
+        \end{tikzpicture}
+        \shorthandon{>}\shorthandon{<}
+    \end{figure}
 
     En este apartado se intenta detallar cómo funcionarán todas las partes en conjunto, explicando a bajo nivel algunas acciones que se pueden realizar por parte del usuario. Describiendo los componentes \textit{software} implicados, que partes están conectadas y cómo se realizan las comunicaciones entre ellos.
 
@@ -420,7 +439,7 @@
 
     Una de las tareas mas simples, pero fundamentales, del proyecto, que ofrece al usuario una funcionalidad básica para navegar por la aplicación. Para este ejemplo vamos a suponer que somos un usuario que se encuentra en la portada de la web (\textit{home screen}), donde visualiza la lista de \textit{boards} que están disponibles, como se muestra en la figura \ref{dchan:boardlist}, y quiere acceder al \textit{board} \textit{Tecnology}, cuyo \textit{slug} es \texttt{/g/}.
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \caption{Lista de \textit{boards} en la portada de la web}\bigskip
         \label{dchan:boardlist}
@@ -439,35 +458,24 @@
 
     \lstinputlisting[language=Java, style=javastyle, caption=Respuesta en \textit{JSON} de llamar a (GET) \texttt{/g}, label=get:threads:response]{code/get-threads-response.json}
 
-    Ahora que ya tenemos la respuesta se ejecutará la función de \textit{callback} en el método \texttt{getThreads()} del ejemplo \ref{get:threads:js}, haciendo que se visualize en el cliente web la información solicitada, de forma similar a cómo se muestra en la figura \ref{4chan:board}.
+    Ahora que ya tenemos la respuesta en el cliente web, se ejecutará la función de \textit{callback} en el método \texttt{getThreads()} del ejemplo \ref{get:threads:js}, haciendo que se visualize en el cliente web la información solicitada, de forma similar a cómo se muestra en la figura \ref{4chan:board}.
 
-    \subsection{Creación de un nuevo \textit{post} en un \textit{thread}}
+    \newpage % REVISAR SI ES NECESARIO AL FINAL
 
-    texto
+    \subsection{Creación de un nuevo \textit{post} en un \textit{thread} (\textit{reply})}
 
-    \begin{figure}[ht]
-        \centering
-        \caption{Relaciones entre las partes del proyecto}\bigskip
-        \label{project:schema}
-        % para poder usar > y < en el draw
-        % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
-        \shorthandoff{>}\shorthandoff{<}
-        \begin{tikzpicture}[node distance=1.5cm]
-            \node (web) {Webpage};
-            \node (api) [right=of web] {API};
-            \node (db) [right=of api] {Database};
-            \draw[<->, thick] (web) -- (api);
-            \draw[<->, thick] (api) -- (db);
-        \end{tikzpicture}
-        \shorthandon{>}\shorthandon{<}
-    \end{figure}
+    Supongamos que un usuario está leyendo su \textit{thread} favorito y quiere aportar un lúcido comentario a la discusión. Lo único que tiene que hacer es pulsar sobre el botón que dice \texttt{[Post a Reply]} y se desplegará un formulario como el de la figura \ref{dcahn:new:post}.
 
     \begin{figure}[ht]
         \centering
-        \caption{Ejemplo de formulario para crear un nuevo \textit{thread}}\bigskip
-        \label{dcahn:newthread}
-        \includegraphics[width=0.7\textwidth]{media/4chan-new-thread.png}
+        \caption{Ejemplo de formulario para agregar un nuevo \textit{post} a un \textit{thread}}\bigskip
+        \label{dcahn:new:post}
+        \includegraphics[width=0.7\textwidth]{media/4chan-reply-to-thread.png}
     \end{figure}
+
+    Una vez se hayan rellenado todos los campos obligatorios del formulario, al pulsar sobre el botón de \texttt{Post} se ejecutará su método asociado.
+
+    \lstinputlisting[language=Java, style=javastyle, caption=Implementación de la llamada a (POST) \texttt{/\{slug\}/thread/\{id\}}, label=post:reply:js]{code/postReply.js}
 
     \newpage
 
