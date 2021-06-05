@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-06-03" view-index="0" gantt-divider-location="656" resource-divider-location="300" version="3.1.3100" locale="es_ES">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-06-03" view-index="0" gantt-divider-location="689" resource-divider-location="300" version="3.1.3100" locale="es_ES">
     <description/>
     <view zooming-state="default:0" id="gantt-chart">
-        <field id="tpd3" name="Nombre" width="368" order="0"/>
-        <field id="tpd4" name="Fecha de inicio" width="48" order="1"/>
-        <field id="tpd5" name="Fecha de fin" width="52" order="2"/>
-        <field id="tpd9" name="Antecesores" width="144" order="4"/>
+        <field id="tpd3" name="Nombre" width="377" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="49" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="53" order="2"/>
+        <field id="tpd9" name="Antecesores" width="118" order="4"/>
         <field id="tpd6" name="Duración" width="40" order="3"/>
+        <field id="tpd10" name="Id." width="48" order="5"/>
         <option id="taskLabelUp" value=""/>
         <option id="taskLabelLeft" value=""/>
+        <option id="taskLabelRight" value="length"/>
     </view>
     <view id="resource-table">
         <field id="0" name="Nombre" width="210" order="0"/>
@@ -44,7 +46,6 @@
         </task>
         <task id="2" name="B Mockups  WEB" color="#8cb6ce" meeting="false" start="2021-06-04" duration="5" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
             <depend id="7" type="2" difference="0" hardness="Strong"/>
-            <depend id="9" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="4" name="C Desarrollo BD" color="#8cb6ce" meeting="false" start="2021-06-08" duration="4" complete="0" thirdDate="2021-06-04" thirdDate-constraint="0" expand="true">
             <depend id="5" type="2" difference="0" hardness="Strong"/>
