@@ -67,7 +67,7 @@ def get_threads(slug):
   mycursor = mydb.cursor()
   mycursor.execute("SELECT name FROM BOARD WHERE slug = '{}'".format(slug))
   board_name = mycursor.fetchone()[0]
-  mycursor.execute("SELECT * FROM THREAD WHERE board = '{}'".format(slug))
+  mycursor.execute("SELECT * FROM THREAD WHERE board = '{}' ORDER BY published DESC".format(slug))
   myresult = mycursor.fetchall()
   for col in myresult:
     thread_list.append(ThreadDTO(*col[:-2]))

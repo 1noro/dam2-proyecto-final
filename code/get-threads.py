@@ -8,7 +8,7 @@ def get_threads(slug):
   )
   board_name = mycursor.fetchone()[0]
   mycursor.execute(
-    "SELECT * FROM THREAD WHERE board = '{}'".format(slug)
+    "SELECT * FROM THREAD WHERE board = '{}' ORDER BY published DESC".format(slug)
   )
   myresult = mycursor.fetchall()
   for col in myresult:
