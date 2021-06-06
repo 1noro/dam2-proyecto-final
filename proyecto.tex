@@ -71,14 +71,14 @@
 
     {\projectname} (pronunciado como \textit{dichan}) es un proyecto de tablón de imágenes \cite{wiki:imageboard}, centrado en el anonimato y la libertad de expresión \textit{on-line}, dónde los usuarios pueden subir imágenes y vídeos cortos para iniciar un debate. Está inspirado en otros tablones existentes como \emph{4chan} y \emph{2channel}, sitios que, a pesar del enorme auge de las redes sociales, siguen siendo el refugio de muchos internautas hoy en día.
 
-    Un tablón de imágenes (también conocido por su nombre en inglés: \textit{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\textit{threads}) de diferentes temáticas en secciones, llamadas tablones o \textit{boards}. Sin embargo, los \textit{threads} en los \textit{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
-
     \begin{figure}[ht]
         \centering
         \caption{Vista del board \texttt{/w/} de \textit{4chan}}\bigskip
         \label{4chan:board}
         \includegraphics[width=1.0\textwidth]{media/4chan-board.png}
     \end{figure}
+
+    Un tablón de imágenes (también conocido por su nombre en inglés: \textit{imageboard}) es un tipo de página web anónima donde la publicación de imágenes y pequeños vídeos cobra una gran importancia. Los primeros tablones de imágenes fueron creados en Japón a finales de los 90, y se basan en el concepto de los foros de texto. En términos generales ambos comparten la misma estructura, incluyendo la separación de los debates (\textit{threads}) de diferentes temáticas en secciones, llamadas tablones o \textit{boards}. Sin embargo, los \textit{threads} en los \textit{imageboards} pueden llegar a ser mucho más esporádicos que en los foros convencionales, donde el tiempo de vida de uno puede ser inferior a varias horas. Los tablones de imágenes más populares en occidente tienden a estar relacionados en su mayoría con la cultura japonesa, como son la temática del \emph{anime} y \emph{manga}. Sin embargo, en Japón son más populares y sus tópicos abarcan una gran variedad de temas.
 
     El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda, incluso con muy pocos recursos, montar su propia instancia en un equipo. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada (\textit{home}), donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización más reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado más tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto (en la figura \ref{web:schema} se describe el recorrido habitual que realizaría un usuario en la web). De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
 
@@ -109,7 +109,7 @@
         \centering
         \caption{Vista del la portada de \textit{2chan}}\bigskip
         \label{2chan:home}
-        \includegraphics[width=1.0\textwidth]{media/2chan-home.png}
+        \includegraphics[width=0.9\textwidth]{media/2chan-home.png}
     \end{figure}
 
     La grán ventaja de utilizar un \emph{API} en el \textit{backend} es que, de esta forma se abre la posibilidad a la aparición de clientes programados por terceros que interactúen con los datos a través de un interfaz común para todos ellos. Haciendo muy portable el proyecto hacia nuevos entornos, como por ejemplo, en forma de app movil, aplicación de escritório u otras interfaces web. Asimismo, el hecho de independizar por completo el cliente del servidor permite que futuras versiones puedan prescindir de alguna de las partes con mucha facilidad y re-implementarla al gusto, facilitando al máximo la re-utilización del código.
@@ -126,7 +126,7 @@
         \centering
         \caption{Vista de lectura de un \textit{thread} en \textit{4chan}}\bigskip
         \label{4chan:thread}
-        \includegraphics[width=1.0\textwidth]{media/4chan-thread.png}
+        \includegraphics[width=0.9\textwidth]{media/4chan-thread.png}
     \end{figure}
 
     El objetivo final pasa por establecer un lugar de debate e intercambio de opiniones abierto, libre y neutral; donde cada usuario pueda encontrar su rincón y hablar de lo que le apetezca con personas que comparten sus mismos gustos y aficiones. Y al mismo tiempo ofrecer espacios donde posiciones opuestas se enfrenten para que eventualmente se alcance un consenso común y beneficioso para ambas partes.
@@ -373,7 +373,7 @@
         \end{itemize}
     \end{itemize}
 
-    \lstinputlisting[language=Java, style=javastyle, caption=\textit{Request body} en \textit{JSON} de llamada a (POST) \texttt{/x/thread}, label=post:thread:requestbody]{code/post-thread-requestbody.json}
+    \lstinputlisting[language=Java, style=javastyle, caption=\textit{Request body} en \textit{JSON} de llamada a (POST) \texttt{/x}, label=post:thread:requestbody]{code/post-thread-requestbody.json}
 
     \begin{itemize}
         \item (GET) \texttt{/\{slug\}/thread/\{id\}} -- Devuelve la lista de todos los \textit{posts} de un \textit{thread} dado.
@@ -457,24 +457,24 @@
         \shorthandon{>}\shorthandon{<}
     \end{figure}
 
-    Es importante resaltar que los ejemplos de código que se muestran en esta sección son ejemplos \textit{mockup} que solo cubren las funcionales básicas de la aplicación, lo que en inglés se llama \textit{happy path}. El propósito de estos es dar una idea de cómo se pretende estructurar el código para que puedan ser tomados como referencia en el futuro desarrollo del proyecto.
+    Es importante resaltar que los ejemplos de código que se muestran en esta sección son ejemplos \textit{mockup} que solo cubren las funcionalidades básicas de la aplicación, lo que en inglés se llama \textit{happy path}. El propósito de estos es dar una idea de cómo se pretende estructurar el código para que puedan ser tomados como referencia en el futuro desarrollo del proyecto.
 
     \subsection{Visualización del contenido de un \textit{board}}
 
-    Una de las tareas mas simples, pero fundamentales, del proyecto, que ofrece al usuario una funcionalidad básica para navegar por la aplicación. Para este ejemplo vamos a suponer que somos un usuario que se encuentra en la portada de la web (\textit{home screen}), donde visualiza la lista de \textit{boards} que están disponibles, como se muestra en la figura \ref{dchan:boardlist}, y quiere acceder al \textit{board} \textit{Tecnology}, cuyo \textit{slug} es \texttt{/g/}.
+    Una de las tareas mas simples, pero fundamentales, del proyecto, que ofrece al usuario una herramienta básica para navegar por la aplicación. En este ejemplo vamos a suponer que somos un usuario que se encuentra en la portada de la web (\textit{home screen}), donde visualiza la lista de \textit{boards} que están disponibles, como se muestra en la figura \ref{dchan:boardlist}, y quiere acceder al \textit{board} \textit{Tecnology}, cuyo \textit{slug} es \texttt{/g/}.
 
     \begin{figure}[ht]
         \centering
         \caption{Lista de \textit{boards} en la portada de la web}\bigskip
         \label{dchan:boardlist}
-        \includegraphics[width=0.9\textwidth]{media/4channel-board-list.png}
+        \includegraphics[width=0.55\textwidth]{media/4channel-board-list.png}
     \end{figure}
 
     Una vez el usuario haga clic en el enlace el proceso empieza con una llamada de tipo \textit{GET} al \textit{API} desde el método \texttt{getThreads()} en cliente web.
 
     \lstinputlisting[language=Java, style=javastyle, caption=Implementación del método \texttt{getThreads()} en el cliente web, label=get:threads:js]{code/getThreads.js}
 
-    Esta llamada es interceptada por el \textit{API} y la redirige al siguiente endpoint.
+    Esta llamada es interceptada por el \textit{API} y la redirige al siguiente \textit{endpoint}.
 
     \lstinputlisting[language=Python, style=javastyle, caption=Implementación del \textit{endpoint} (GET) \texttt{/g} en el \textit{API}, label=get:threads:python]{code/get-threads.py}
 
@@ -511,7 +511,7 @@
 
     \lstinputlisting[language=SQL, style=javastyle, caption=Procedimiento almacenado para la inserción de un nuevo \textit{post}, label=insert:post]{code/insert-post.sql}
 
-    Una vez el nuevo \textit{post} queda registrado en la base de datos y asociado a un \textit{thread}, el usuario será informado de la publicación con un mensaje de felicitación. La próxima vez que se visite el \textit{thread} (ejemplo en la figura \ref{4chan:thread}) o se actualize la página, el usuario podrá ver reflejada su aportación a la conversación.
+    Una vez el nuevo \textit{post} queda registrado en la base de datos y asociado a un \textit{thread}, el usuario será informado de que la publicación se ha realizado satisfactoriamente con un mensaje de felicitación. La próxima vez que se visite el \textit{thread} (ejemplo en la figura \ref{4chan:thread}) o se actualize la página, el usuario podrá ver reflejada su aportación a la conversación.
 
     \newpage
 
@@ -520,7 +520,7 @@
     % para listar esta sección en el tableofcontents
     \addcontentsline{toc}{section}{Ejemplos de código}
 
-    Esta sección es una compilación todos los bloques de código que se han descrito a lo largo del documento, y equivale al apartado 7 de la guía del proyecto.
+    Esta sección es una compilación todos los bloques de código que se han descrito a lo largo del documento, y \textbf{equivale al apartado 7} de la guía del proyecto.
 
     \newpage
 
