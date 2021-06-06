@@ -80,7 +80,24 @@
         \includegraphics[width=1.0\textwidth]{media/4chan-board.png}
     \end{figure}
 
-    El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda montar su propia instancia en un equipo, incluso con muy pocos recursos. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada, donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización más reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado más tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto. De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
+    El proyecto {\projectname} intenta emular a estos tablones haciendo muy sencillo que cualquiera que lo desee pueda, incluso con muy pocos recursos, montar su propia instancia en un equipo. La estructura de la página es muy simple, consta principalmente de dos partes bien diferenciadas: la portada (\textit{home}), donde se visualizará la lista de \textit{boards} activos en la página; y los \textit{boards} en sí, cada uno de su temática particular y limitado a nueve páginas de contenido. Cada página de un \textit{board} contendrá cinco \textit{threads} ordenados por fecha de actualización más reciente, es decir, en el primer puesto de la primera página se colocará el \textit{thread} que ha recibido el último comentario y en el último puesto de la novena página estará el \textit{thread} que ha pasado más tiempo sin comentarios. En el momento que un usuario decida abrir un nuevo \textit{thread} ese último se borrará y el nuevo aparecerá en el primer puesto (en la figura \ref{web:schema} se describe el recorrido habitual que realizaría un usuario en la web). De esta forma se consigue ese dinamismo tán característico de los \textit{imageboards} dónde tienes la certeza de que lo primero que ves al entrar es de lo que se está hablando actualmente, es el tema del momento.
+
+    \begin{figure}[ht]
+        \centering
+        \caption{Recorrido del usuario para acceder al contenido que desea}\bigskip
+        \label{web:schema}
+        % para poder usar > y < en el draw
+        % (https://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+        \shorthandoff{>}\shorthandoff{<}
+        \begin{tikzpicture}[node distance=1.5cm]
+            \node (home)  {HOME};
+            \node (board) [right=of home] {BOARD};
+            \node (thread) [right=of board] {THREAD};
+            \draw[->, thick] (home) -- (board);
+            \draw[->, thick] (board) -- (thread);
+        \end{tikzpicture}
+        \shorthandon{>}\shorthandon{<}
+    \end{figure}
 
     La intención del proyecto mira hacia un futuro colaborativo, donde muchas personas puedan aportar sus opiniones y mejoras al mismo. Este es el motivo por el que se publica bajo la \emph{GNU General Public License version 3} \cite{gnugplv3}, para garantizar que forme parte del movimiento del \emph{software libre} definido por \textcite{libresoftwaredefinition}. El código fuente será accesible desde un repositorio \emph{Git} de libre acceso, donde cualquier persona podrá proponer cambios a través de los procedimientos establecidos. De esta forma también es posible que surjan \textit{forks} \cite{wiki:fork} donde, utilizando este proyecto como base, cualquiera puede cambiar radicalmente el propósito original y aportar un enfoque completamente diferente.
 
@@ -419,6 +436,8 @@
 
     % \bigskip\hrule\bigskip
 
+    En este apartado se intenta detallar cómo funcionarán todas las partes en conjunto, explicando a bajo nivel algunas acciones que se pueden realizar por parte del usuario. Describiendo los componentes \textit{software} implicados, que partes están conectadas y cómo se realizan las comunicaciones entre ellos.
+
     \begin{figure}[ht]
         \centering
         \caption{Relaciones entre las partes del proyecto entre sí y con el usuario}\bigskip
@@ -438,7 +457,7 @@
         \shorthandon{>}\shorthandon{<}
     \end{figure}
 
-    En este apartado se intenta detallar cómo funcionarán todas las partes en conjunto, explicando a bajo nivel algunas acciones que se pueden realizar por parte del usuario. Describiendo los componentes \textit{software} implicados, que partes están conectadas y cómo se realizan las comunicaciones entre ellos.
+    Es importante resaltar que los ejemplos de código que se muestran en esta sección son ejemplos \textit{mockup} que solo cubren las funcionales básicas de la aplicación, lo que en inglés se llama \textit{happy path}. El propósito de estos es dar una idea de cómo se pretende estructurar el código para que puedan ser tomados como referencia en el futuro desarrollo del proyecto.
 
     \subsection{Visualización del contenido de un \textit{board}}
 
